@@ -1,42 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cinemax - Registration</title>
-    <link rel="stylesheet" href="../css/regstyles.css">
-    <script>
-    </script>
-</head>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cinemax - Registration</title>
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/regstyles.css">
+        <script>
+        </script>
+    </head>
 <body>
+  <header>
+    <img class="headerimg" src="../resources/Cinemax_(Yellow).svg.png">
+    <section class="authentication">
+      <p style="color:white;text-align:center;padding:5px">Cinemax Member ?</p>
+      <button onclick="window.location.href='login.html'" class="loginbtn">Login</button>
+      <button onclick="window.location.href='registration.html'"class="registerbtn">Register</button>
+    </section>
+  </header>
+  <section class="space"></section>
+  <nav>
+    <ul class = "navlist">
+      <li><a class="active" href="movies.html">Movies</a></li>
+      <li><a href="cinemas.html">Cinemas</a></li>
+      <li><a href="snacks.html">Snacks</a></li>
+      <li><a href="promotions.html">Promotions</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
     <form action="" style="border:1px solid #ccc" class="regform">
         <div class="container">
           <h1>Sign Up</h1>
-          <p>Please fill in this form to create an account.</p>
-          <hr>
+            <p>Please fill in this form with the following information to sign up for your Cinemax membership.</p>
+            <p>Your <b>Email Address</b> will be used for logging in.</p>
+            <p>Fields with asterisks (<span class="red">*</span>) are mandatory.</p>
 
-          <label for="firstname"><b>First Name</b></label>
-          <input type="text" placeholder="Enter Last Name" name="fname" required>
+          <fieldset>
+            <legend><b>Personal Information</b></legend>
 
-          <label for="lastname"><b>Last Name</b></label>
-          <input type="text" placeholder="Enter Last Name" name="lname" required>
-      
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-      
+            <span class="red">*</span><label for="firstname">First Name</label>
+            <input type="text" placeholder="Enter Last Name" name="fname" required>
+
+            <span class="red">*</span><label for="lastname">Last Name</label>
+            <input type="text" placeholder="Enter Last Name" name="lname" required>
+
+            <label for="gender">Gender</label>
+            <select name="gender">
+              <option disabled selected value="Unspecified">--- Select an option ---</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+
+            <span class="red">*</span><label for="dateofbirth">Date of Birth</label>
+            <input type="date" placeholder="Enter Last Name" name="dob" required>
+
+          </fieldset>
+
+          <fieldset>
+            <legend><b>Contact Information</b></legend>
+
+            <span class="red">*</span><label for="contactnumber"><b>Contact Number</b></label>
+            <input type="tel" placeholder="Enter Contact Number" name="contactno" required>
+
+            <span class="red">*</span><label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+        
+            <span class="red">*</span><label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+        
+            <span class="red">*</span><label for="repeatpassword"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="repeatpsw" required>
+        
+          </fieldset>
+
           <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            <input type="checkbox" name="agreement" style="margin-bottom:15px"> I accept the <a href="#">Terms & Privacy Policy</a>
           </label>
-      
-          <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-      
+          <br><br>
           <div class="clearfix">
             <button type="button" class="cancelbtn">Cancel</button>
             <button type="submit" class="signupbtn">Sign Up</button>

@@ -1,33 +1,49 @@
 * {box-sizing: border-box}
 
+header {
+  background-color: black;
+  width:100%;
+}
+
 .regform {
     width: 75%;
-    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
     padding: auto;
+    background: #fafafa;
+}
+
+.red {
+  color:red;
+}
+
+fieldset {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px 50px 20px 50px;
 }
 
 /* Full-width input fields */
-  input[type=text], input[type=password] {
+  input[type=text], input[type=password], input[type=date], input[type=tel], Select {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
-  border: none;
-  background: #f1f1f1;
+  background: white;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=tel]:focus, Select:focus {
+  outline: #668cff solid 2px;
 }
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
+/* input[type=date]:focus, Select:focus {
+  background-color:#f1f1f1;
+} */
 
 /* Set a style for all buttons */
-button {
+.cancelbtn, .signupbtn {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
