@@ -1,1 +1,50 @@
-<h1>Login here!</h1>
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cinemax - Login</title>
+        <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/loginstyles.css">
+        <script>
+        </script>
+    </head>
+<body>
+  <header>
+    <img class="headerimg" src="../resources/Cinemax_(Yellow).svg.png">
+    <section class="authentication">
+      <p style="color:white;text-align:center;padding:5px">Cinemax Member ?</p>
+      <button onclick="window.location.href='login.html'" class="loginbtn">Login</button>
+      <button onclick="window.location.href='registration.html'"class="registerbtn">Register</button>
+    </section>
+  </header>
+  <section class="space"></section>
+  <nav>
+    <ul class = "navlist">
+      <li><a class="active" href="movies.html">Movies</a></li>
+      <li><a href="cinemas.html">Cinemas</a></li>
+      <li><a href="snacks.html">Snacks</a></li>
+      <li><a href="promotions.html">Promotions</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+    <form action="" style="border:1px solid #ccc" class="loginform">
+        <div class="container">
+          <h1>Login to your Cinemax member account</h1>
+          <fieldset>
+
+            <label for="email">Email</label>
+            <input type="email" name="loginemail" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="loginpassword" required>
+
+          </fieldset>
+          <div class="clearfix">
+            <button type="button" class="loginformbtn">Login</button>
+          </div>
+        </div>
+      </form>
+</body>
+</html>

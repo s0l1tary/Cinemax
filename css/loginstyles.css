@@ -5,7 +5,7 @@ header {
   width:100%;
 }
 
-.regform {
+.loginform {
     width: 75%;
     margin-top: 50px;
     margin-bottom: 50px;
@@ -26,7 +26,7 @@ fieldset {
 }
 
 /* Full-width input fields */
-  input[type=text], input[type=password], input[type=date], input[type=email], input[type=tel], Select {
+input[type=email], input[type=password] {
   width: 100%;
   padding: 10px;
   margin: 5px 0 22px 0;
@@ -34,40 +34,24 @@ fieldset {
   background: white;
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=email]:focus, input[type=tel]:focus, Select:focus {
+input[type=email]:focus, input[type=password]:focus {
   outline: #668cff solid 2px;
 }
 
-/* input[type=date]:focus, Select:focus {
-  background-color:#f1f1f1;
-} */
-
 /* Set a style for all buttons */
-.cancelbtn, .signupbtn {
-  background-color: #4CAF50;
+.loginformbtn {
+  background-color:#4CAF50;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin-left: 50px;
   border: none;
   cursor: pointer;
-  width: 100%;
   opacity: 0.9;
+  width: 50%;
 }
 
 button:hover {
   opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
 }
 
 /* Add padding to container elements */
