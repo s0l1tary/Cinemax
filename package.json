@@ -1,0 +1,25 @@
+{
+  "name": "cinemax",
+  "version": "1.0.0",
+  "description": "Cinemas collaborated:\r Shaw Theatres\r Golden Village\r Filmgarde Cineplexes\r Cathay Cineplexes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s0l1tary/Cinemax.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s0l1tary/Cinemax/issues"
+  },
+  "homepage": "https://github.com/s0l1tary/Cinemax#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "md5": "^2.2.1",
+    "mongoose": "^5.8.9"
+  }
+}
