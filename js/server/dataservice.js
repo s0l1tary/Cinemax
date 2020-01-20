@@ -108,6 +108,6 @@ var database={
             }
         })
     },
-    //register:function(n,d,sd)
+    //register:function(fn,ln,g,dob,cn,e,)
 };
 module.exports=database;
