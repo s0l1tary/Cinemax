@@ -1,5 +1,6 @@
 /*
-(get)/=movie page
+(get)/=main page
+(get)/Movie=movie page
 (get)/Cinema=cinema page
 (get)/Snack=snack page
 (get)/Login=login page
@@ -38,7 +39,7 @@ var routes = function () {
     });
 
     router.get('/',function(req,res){
-        res.sendFile(__dirname+"/views/movies.html");
+        res.sendFile(__dirname+"/views/index.html");
     });
 
     router.get('/Cinema',function(req,res){
@@ -73,6 +74,10 @@ var routes = function () {
         res.sendFile(__dirname+"/views/booking.html");
     });
 
+    router.get('/Movie',function(req,res){
+        res.sendFile(__dirname+"/views/movies.html")
+    });
+
     router.get('/api/bookings', function (req, res) {
         db.getFlights(function(err,flights){
             if(err){
@@ -95,7 +100,13 @@ var routes = function () {
         })
     });
 
+    router.get('/api/movies',function(req,res){
 
+    })
+
+    router.get('/api/movie/:id',function(req,res){
+        
+    })
 
     router.post('/api/register',function(req,res){
         var data=req.body;
