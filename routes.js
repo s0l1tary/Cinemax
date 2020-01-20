@@ -1,4 +1,13 @@
 /*
+(get)/=movie page
+(get)/Cinema=cinema page
+(get)/Snack=snack page
+(get)/Login=login page
+(get)/Register=register page
+(get)/Profile=profile page
+(get)/Promotion=promotion page
+(get)/About=about page
+(get)/Booking=booking page
 (get)/api/bookings=get all bookings
 (post)/api/bookings(userID,cinemaID,showingID,snackID)=add new booking
 (post)/api/register(firstName,lastName,gender,dateOBirth,contactNumber,email,password)=add new user
@@ -25,7 +34,39 @@ var routes = function () {
     });
 
     router.get('/',function(req,res){
-        res.sendFile(__dirname+"/views/movies");
+        res.sendFile(__dirname+"/views/movies.html");
+    });
+
+    router.get('/Cinema',function(req,res){
+        res.sendFile(__dirname+"/views/cinemas.html");
+    });
+
+    router.get('/Snack',function(req,res){
+        res.sendFile(__dirname+"/views/snacks.html");
+    });
+
+    router.get('/Login',function(req,res){
+        res.sendFile(__dirname+"/views/login.html");
+    });
+
+    router.get('/Register',function(req,res){
+        res.sendFile(__dirname+"/views/register.html");
+    });
+
+    router.get('/Profile',function(req,res){
+        res.sendFile(__dirname+"/views/profile.html");
+    });
+
+    router.get('/Promotion',function(req,res){
+        res.sendFile(__dirname+"/views/promotions.html");
+    });
+
+    router.get('/About',function(req,res){
+        res.sendFile(__dirname+"/views/about.html");
+    });
+
+    router.get('/Booking',function(req,res){
+        res.sendFile(__dirname+"/views/booking.html");
     });
 
     router.get('/api/bookings', function (req, res) {

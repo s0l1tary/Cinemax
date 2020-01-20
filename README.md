@@ -11,6 +11,7 @@ for all locations of each cinema branch visit https://en.wikipedia.org/wiki/List
 movies.html is now the default page, showtimes will be removed
 
 Booking table
+ID
 UserID
 CinemaID
 ShowingID
@@ -19,7 +20,12 @@ SnacksID
 Cinemas table
 ID
 name
-movieShowing
+ShowingID
+
+Showing table
+movieName
+address
+timing
 
 Snacks table
 ID

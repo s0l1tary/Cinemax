@@ -8,7 +8,13 @@ SnacksID
 Cinemas table
 ID
 name
-movieShowing
+showing
+addresses
+
+Showing table
+movie Name
+seats
+timing
 
 Snacks table
 ID
@@ -26,10 +32,6 @@ password
 */
 var mongoose=require('mongoose');
 var schema=mongoose.Schema;
-var userSchema={};
-var bookingSchema={};
-var cinemaSchema={};
-var snackSchema={};
 
 var UserModel,BookingModel,CinemaModel,SnackModel;
 var md5=require("md5");
@@ -40,8 +42,63 @@ var database={
             if(err==null){
                 console.log("connected to Mongo DB");
                 userSchema=schema({
-                    
+                    firstName:String,
+                    lastName:String,
+                    gender:String,
+                    dateOfBirth:Date,
+                    contactNumber:Number,
+                    email:String,
+                    password:String
+                });
+                bookingSchema=schema({
+                    user:{
+                        type:schema.Types.ObjectId,
+                        ref:'User'
+                    },
+                    cinema:{
+                        type:schema.Types.ObjectId,
+                        ref:'Cinema'
+                    },
+                    showing:{
+                        type:schema.Types.ObjectId,
+                        ref:'Showing'
+                    },
+                    snack:{
+                        type:schema.Types.ObjectId,
+                        ref:'Snack'
+                    }
+
+                });
+                cinemaSchema=schema({
+                    name:String,
+                    showing:{
+                        type:schema.Types.ObjectId,
+                        ref:'Showing'
+                    },
                 })
+                //seats
+                //true=available
+                //false=taken
+                showingSchema=schema({
+                    movieName:String,
+                    addresses:Array,
+                    timing:{
+                        start:{
+                            date:Date,
+                            time:String
+                        },
+                        end:{
+                            date:Date,
+                            time:String
+                        }
+                    },
+                    seats:Array
+                })
+                snackSchema=schema({
+                    name:String,
+                })
+                var connection=mongoose.connection;
+                UserModel=mongoose.model('User',userSchema)
             }
         })
     }
