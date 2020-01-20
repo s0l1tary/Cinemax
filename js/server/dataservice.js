@@ -38,7 +38,7 @@ var md5=require("md5");
 
 var database={
     connect:function(){
-        mongoose.connect('mongodb://localhost:27017/cinemaManagement',{useNewUrlParser:true},function(err){
+        mongoose.connect('mongodb://localhost:27017/cinemaManagement',{useNewUrlParser:true,useUnifiedTopology:true},function(err){
             if(err==null){
                 console.log("connected to Mongo DB");
                 userSchema=schema({
@@ -99,8 +99,15 @@ var database={
                 })
                 var connection=mongoose.connection;
                 UserModel=mongoose.model('User',userSchema)
+                BookingModel=mongoose.model('Booking',bookingSchema)
+                CinemaModel=mongoose.model('Cinema',cinemaSchema)
+                ShowingModel=mongoose.model('Showing',showingSchema)
+                SnackModel=mongoose.model('Snack',snackSchema)
+            }else{
+                console.log("Error connecting to Mongo DB",err);
             }
         })
-    }
+    },
+    //register:function(n,d,sd)
 };
 module.exports=database;

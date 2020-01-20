@@ -32,6 +32,10 @@ var routes = function () {
     router.get('/js/*', function(req, res)  {
         res.sendFile(__dirname+req.originalUrl);
     });
+    
+    router.get('/resources/*', function(req, res)  {
+        res.sendFile(__dirname+req.originalUrl);
+    });
 
     router.get('/',function(req,res){
         res.sendFile(__dirname+"/views/movies.html");
