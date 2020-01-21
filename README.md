@@ -48,6 +48,7 @@ Showing table
 movieName
 address
 timing
+seats
 
 Snacks table
 ID
