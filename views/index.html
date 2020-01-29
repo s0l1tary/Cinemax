@@ -27,21 +27,54 @@
         <li><a href="/About">About</a></li>
       </ul>
 </nav>
-    <h1>All Movies</h1>
+    <h1 class = "headerTitle">NULL</h1>
+    <div class="id1">
+      <button class="nowShowingBtn">Now Showing</button>
+      <button class="topRatedBtn">Top Rated</button>
+      <button class="upcomingBtn">Upcoming</button>
+    </div>
     <table class="moviesTable">
     <tr>
 
     </tr>
     </table>
     <script src="../js/client/jquery-3.4.1.min.js"></script>
+    <!-- <script src="../js/client/movie.js"></script> -->
+
     <script>
       $(document).ready(function() {
         $.ajax({
-          url: "/api/movies/topRated/1",
+          url: "/api/movies/nowShowing/1",
           method: "get",
           dataType: "json"
         })
         .done(function(data){
+          $('.headerTitle').text("Now Showing")
+          var counter = 0;
+          $.each(data.results, function(key,value) {
+            if(counter>3){
+              $('.moviesTable > tbody:last-child').append("<tr><td><a href='/movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
+              counter=0;
+            }else{
+            $('.moviesTable tr:last').append("<td><a href='/movies/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
+            }
+              counter++;
+          });
+        })
+        .fail(function(err) {
+          console.log(err.responseText);
+         });
+         
+        $(".nowShowingBtn").on('click',function () {
+          $.ajax({
+          url: "/api/movies/nowShowing/1",
+          method: "get",
+          dataType: "json"
+        })
+        .done(function(data){
+          $('.headerTitle').text("Now Showing")
+          $('.moviesTable').detach()
+          $('.id1').after("<table class='moviesTable'><tr></tr></table>")
           var counter = 0;
           $.each(data.results, function(key,value) {
             if(counter>3){
@@ -55,7 +88,64 @@
         })
         .fail(function(err) {
           console.log(err.responseText);
+         });
+
         });
+
+      $(".topRatedBtn").on('click',function () {
+          $.ajax({
+          url: "/api/movies/topRated/1",
+          method: "get",
+          dataType: "json"
+        })
+        .done(function(data){
+          $('.headerTitle').text("Top Rated")
+          $('.moviesTable').detach()
+          $('.id1').after("<table class='moviesTable'><tr></tr></table>")
+          var counter = 0;
+          $.each(data.results, function(key,value) {
+            if(counter>3){
+              $('.moviesTable > tbody:last-child').append("<tr><td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
+              counter=0;
+            }else{
+            $('.moviesTable tr:last').append("<td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
+            }
+              counter++;
+          });
+        })
+        .fail(function(err) {
+          console.log(err.responseText);
+         });
+
+        });
+
+        $(".upcomingBtn").on('click',function () {
+          $.ajax({
+          url: "/api/movies/upcoming/1",
+          method: "get",
+          dataType: "json"
+        })
+        .done(function(data){
+          $('.headerTitle').text("Upcoming")
+          $('.moviesTable').detach()
+          $('.id1').after("<table class='moviesTable'><tr></tr></table>")
+          var counter = 0;
+          $.each(data.results, function(key,value) {
+            if(counter>3){
+              $('.moviesTable > tbody:last-child').append("<tr><td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
+              counter=0;
+            }else{
+            $('.moviesTable tr:last').append("<td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
+            }
+              counter++;
+          });
+        })
+        .fail(function(err) {
+          console.log(err.responseText);
+         });
+
+        });
+
       });
     </script>
 </body>
