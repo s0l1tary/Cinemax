@@ -111,19 +111,87 @@ header {
 
   tr {
     width: 100%;
-    height: 300px;
+    height: 350px;
     display:flex;
     justify-content: space-around;
-    text-align: center;
     overflow-wrap: break-word;
   }
 
   tr img {
-    width: 100px;
-    height: 150px;
+    width: 175px;
+    height: 250px;
   }
   
   .mov{
-    width: 100px;
+    width: 150px;
     height: 100px;
+    text-align: center;
+    margin: auto;
+    padding: auto;
+    color: white;
+    font-weight: bolder;
+  }
+
+  body {
+    background-color: gray;
+  }
+
+  .id1 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display:flex;
+    justify-content: space-around;
+  }
+
+  .headerTitle {
+    margin: 20px;
+    color: white;
+    font-variant: small-caps;
+  }
+
+  .nowShowingBtn, .topRatedBtn, .upcomingBtn {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .nowShowingBtn {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+  }
+  
+  .nowShowingBtn:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .topRatedBtn {
+    background-color: white; 
+    color: black; 
+    border: 2px solid darkorange;
+  }
+  
+  .topRatedBtn:hover {
+    background-color: darkorange;
+    color: white;
+  }
+
+  .upcomingBtn {
+    background-color: white; 
+    color: black; 
+    border: 2px solid red;
+  }
+  
+  .upcomingBtn:hover {
+    background-color: red;
+    color: white;
   }
