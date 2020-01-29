@@ -102,3 +102,28 @@ header {
     box-shadow: 0 0px white;
     transform: translateY(4px);
   }
+
+  table {
+    width: 80%;
+    margin: auto;
+    padding: auto;
+  }
+
+  tr {
+    width: 100%;
+    height: 300px;
+    display:flex;
+    justify-content: space-around;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  tr img {
+    width: 100px;
+    height: 150px;
+  }
+  
+  .mov{
+    width: 100px;
+    height: 100px;
+  }
