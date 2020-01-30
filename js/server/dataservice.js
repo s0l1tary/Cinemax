@@ -82,7 +82,7 @@ var database = {
                 //true=available
                 //false=taken
                 showingSchema = schema({
-                    movieName: String,
+                    movieId: Number,
                     address: String,
                     timing: {
                         Date:Date,
@@ -133,6 +133,9 @@ var database = {
     },
     getShowingsByMovieId:function(mid,callback){
         ShowingModel.find({movieId:mid},callback)
+    },
+    getCinemasByShowingId:function(sid,callback){
+        CinemaModel.findOne({showing:sid},callback)
     },
     addBooking: function (uid, cid, sid,snackIdArray, callback) {
         newBooking = new BookingModel({
