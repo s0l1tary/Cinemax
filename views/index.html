@@ -53,10 +53,10 @@
           var counter = 0;
           $.each(data.results, function(key,value) {
             if(counter>3){
-              $('.moviesTable > tbody:last-child').append("<tr><td><a href='/movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
+              $('.moviesTable > tbody:last-child').append("<tr><td><a href='/Movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
               counter=0;
             }else{
-            $('.moviesTable tr:last').append("<td><a href='/movies/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
+            $('.moviesTable tr:last').append("<td><a href='/Movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
             }
               counter++;
           });
@@ -78,10 +78,10 @@
           var counter = 0;
           $.each(data.results, function(key,value) {
             if(counter>3){
-              $('.moviesTable > tbody:last-child').append("<tr><td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
+              $('.moviesTable > tbody:last-child').append("<tr><td><a href='/Movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
               counter=0;
             }else{
-            $('.moviesTable tr:last').append("<td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
+            $('.moviesTable tr:last').append("<td><a href='/Movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
             }
               counter++;
           });
@@ -105,10 +105,10 @@
           var counter = 0;
           $.each(data.results, function(key,value) {
             if(counter>3){
-              $('.moviesTable > tbody:last-child').append("<tr><td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
+              $('.moviesTable > tbody:last-child').append("<tr><td><a href='/Movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
               counter=0;
             }else{
-            $('.moviesTable tr:last').append("<td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
+            $('.moviesTable tr:last').append("<td><a href='/Movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
             }
               counter++;
           });
@@ -132,10 +132,10 @@
           var counter = 0;
           $.each(data.results, function(key,value) {
             if(counter>3){
-              $('.moviesTable > tbody:last-child').append("<tr><td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
+              $('.moviesTable > tbody:last-child').append("<tr><td><a href='/Movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td></tr>")
               counter=0;
             }else{
-            $('.moviesTable tr:last').append("<td><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
+            $('.moviesTable tr:last').append("<td><a href='/Movie/"+value.id+"'><img src='http://image.tmdb.org/t/p/w185/"+value.poster_path+"'></a><br><div class='mov'><p class='movietitle'>"+value.title+"</p></div></td>");
             }
               counter++;
           });
