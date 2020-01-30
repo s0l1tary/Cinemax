@@ -85,14 +85,8 @@ var database = {
                     movieName: String,
                     address: String,
                     timing: {
-                        start: {
-                            date: Date,
-                            time: String
-                        },
-                        end: {
-                            date: Date,
-                            time: String
-                        }
+                        Date:Date,
+                        Time:String
                     },
                     seats: [
                         {
@@ -136,6 +130,9 @@ var database = {
     },
     getBookings:function(uid,callback){
         BookingModel.find({user:uid},callback);
+    },
+    getShowingsByMovieId:function(mid,callback){
+        ShowingModel.find({movieId:mid},callback)
     },
     addBooking: function (uid, cid, sid,snackIdArray, callback) {
         newBooking = new BookingModel({
