@@ -8,19 +8,28 @@ $(document).ready(function () {
         dataType: "json"
     }).done(
         function(data) {
+            console.log("/api/movie/"+movieId);
             $('.movieimage').attr("src","http://image.tmdb.org/t/p/w185/"+data.poster_path);
             $('.movietitle').append(data.title);
-            $('.movietagline').append(data.tagline);
+            $('.movietagline').append("'"+data.tagline+"'");
             $('.movieoverview').append(data.overview);
-            $('.movieruntime').text(data.runtime);
+            $('.movieruntime').append(data.runtime+" minutes");
             $.each(data.genres, function(key,value) {
-                $('.moviegenre').append(value.name);
+                if(data.genres.length > key+1) {
+                    $('.moviegenre').append(value.name+", ");
+                } else {
+                    $('.moviegenre').append(value.name);
+                }
             })
             $.each(data.spoken_languages, function(key,value) {
-                $('.movielanguage').append(value.name);
+                if (data.spoken_languages.length > key + 1) {
+                    $('.movielanguage').append(value.name+", ");
+                } else {
+                    $('.movielanguage').append(value.name);
+                }
             })
-            $('.movierelease').text(data.release_date);
-            $('.movievote').text(data.vote_average);
+            $('.movierelease').append(data.release_date);
+            $('.movievote').append(data.vote_average);
             $('.moviehomepage').text("Website");
             $('.moviehomepage').attr("href",data.homepage);
         }

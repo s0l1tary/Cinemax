@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Cinemax - Movies</title>
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/movie.css">
 </head>
 
 <body>
@@ -27,22 +28,40 @@
       <li><a href="/About">About</a></li>
     </ul>
   </nav>
-  <h1 class="movietitle"></h1>
-  <img class="movieimage"/><br><br>
-  <span class="movietagline"></span><br>
-  <span class="movieoverview">Synopsis:</span><br>
-  <span class="movieruntime"></span><br>
-  <span class="moviegenre"></span><br>
-  <span class="movielanguage"></span><br>
-  <span class="movierelease"></span><br>
-  <span class="movievote"></span><br>
-  <a class="moviehomepage" href=""></a>
-  <script src="../js/client/jquery-3.4.1.min.js"></script>
-  <script src="../js/client/movie.js"></script>
+  <section class = "moviedetails">
 
-  <section>
-    <
+    <h1 class="movietitle"></h1>
+    <hr>
+    <div class = "imagegroup">
+      <img class="movieimage"/><br>
+      <span class="movietagline"></span><br>
+    </div>
+
+    <div class = "textgroup">
+      <span class="movieoverview"><span class="gold">Sypnosis: </span></span><br><br>
+      <span class="movieruntime"><span class="gold">Duration: </span></span><br><br>
+      <span class="moviegenre"><span class="gold">Genre(s): </span></span><br><br>
+      <span class="movielanguage"><span class="gold">Languages Available: </span></span><br><br>
+      <span class="movierelease"><span class="gold">Release Date: </span></span><br><br>
+      <span class="movievote"><span class="gold">Cinemax Users Rating: </span></span><br><br>
+      <button class="websiteBtn"><a class="moviehomepage" href=""></a></button>
+    </div>
+    
+
+    <script src="../js/client/jquery-3.4.1.min.js"></script>
+    <script src="../js/client/movie.js"></script>
   </section>
+
+  <section class = "movieslots">
+
+    <h1 class="timeslots">Purchase Tickets</h1>
+
+
+    <hr>
+  
+
+  </section>
+
 </body>
 
 </html>

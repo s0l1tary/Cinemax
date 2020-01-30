@@ -115,7 +115,6 @@ header {
     height: 350px;
     display:flex;
     justify-content: space-around;
-    overflow-wrap: break-word;
   }
 
   tr img {
@@ -165,34 +164,34 @@ header {
   }
 
   .nowShowingBtn {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #4CAF50;
+    background-color: #4CAF50; 
+    color: white; 
+    border: 2px solid rgb(42, 97, 44);
   }
   
   .nowShowingBtn:hover {
-    background-color: #4CAF50;
+    background-color: rgb(42, 97, 44);
     color: white;
   }
 
   .topRatedBtn {
-    background-color: white; 
-    color: black; 
-    border: 2px solid darkorange;
+    background-color: darkorange; 
+    color:white ;
+    border: 2px solid rgb(165, 91, 0);
   }
   
   .topRatedBtn:hover {
-    background-color: darkorange;
+    background-color: rgb(165, 91, 0);
     color: white;
   }
 
   .upcomingBtn {
-    background-color: white; 
-    color: black; 
-    border: 2px solid red;
+    background-color: red;
+    color: white; 
+    border: 2px solid rgb(165, 0, 0);
   }
   
   .upcomingBtn:hover {
-    background-color: red;
+    background-color: rgb(165, 0, 0);
     color: white;
   }

@@ -1,0 +1,75 @@
+.moviedetails {
+    margin: 50px;
+    float: left;
+    width: 90%;
+}
+
+.movieslots {
+    margin: 50px;
+    clear: both;
+}
+
+hr {
+    margin: 15px;   
+}
+
+.moviedetails {
+    height: 600px;
+}
+
+.movieslots {
+    height: 600px;
+    background-color: rgb(59, 59, 59);
+}
+
+.movietitle, .timeslots {
+    font-size: 60px;
+    text-align: center;
+    height: 100px;
+    font-variant: small-caps;
+}
+
+.timeslots {
+    padding-top: 40px;
+}
+
+.movietagline {
+    font-style: italic;
+}
+
+.movieimage {
+    width: 266px;
+    height: 400px;
+}
+
+.imagegroup {
+    float: left;
+    margin-right: 50px;
+    text-align: center;
+}
+
+.textgroup {
+    margin: 25px 0px 25px 0px;
+}
+
+.gold {
+    color: gold;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+.websiteBtn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: black;
+    background-color: #4CAF50;
+    border: none;
+  }

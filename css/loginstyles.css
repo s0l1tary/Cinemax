@@ -1,4 +1,7 @@
-* {box-sizing: border-box}
+* {
+  box-sizing: border-box;
+  color: black;
+}
 
 header {
   background-color: black;
@@ -13,6 +16,10 @@ header {
     margin-right: auto;
     padding: auto;
     background: #fafafa;
+}
+
+.loginform button {
+  width: 88%;
 }
 
 .red {
