@@ -7,35 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Cinemax - Movies</title>
   <link rel="stylesheet" href="../css/styles.css">
-  <script>
-  </script>
 </head>
 
 <body>
-  <script>
-    $(document).ready(function () {
-      $.ajax({
-        url: "/movies",
-        method: "get",
-        dataType: "json"
-      })
-      .done(function(data){
-        var counter = 0;
-        $.each(data, function(key,value) {
-          var content = "<tr><td>";
-            content.append("test");
-            content.append("</tr></td>");
-          if(counter>3){
-            $('.moviesTable tr:last').after('<tr><td>'+"test"+'</td></tr>')
-          }
-          else{
-            $('.moviesTable tr:last').append("<td>test</td>");
-          }
-          counter++;
-        });
-      })
-    });
-  </script>
   <header>
     <img class="headerimg" src="../resources/Cinemax_(Yellow).svg.png">
     <section class="authentication">
@@ -53,10 +27,22 @@
       <li><a href="/About">About</a></li>
     </ul>
   </nav>
-  <h1>Movies ID</h1>
-  <table class="moviesTable">
+  <h1 class="movietitle"></h1>
+  <img class="movieimage"/><br><br>
+  <span class="movietagline"></span><br>
+  <span class="movieoverview">Synopsis:</span><br>
+  <span class="movieruntime"></span><br>
+  <span class="moviegenre"></span><br>
+  <span class="movielanguage"></span><br>
+  <span class="movierelease"></span><br>
+  <span class="movievote"></span><br>
+  <a class="moviehomepage" href=""></a>
+  <script src="../js/client/jquery-3.4.1.min.js"></script>
+  <script src="../js/client/movie.js"></script>
 
-  </table>
+  <section>
+    <
+  </section>
 </body>
 
 </html>

@@ -78,7 +78,7 @@ var routes = function () {
         res.sendFile(__dirname + "/views/booking.html");
     });
 
-    router.get('/Movie/:id', function (req, res) {
+    router.get('/Movie', function (req, res) {
         res.sendFile(__dirname + "/views/movie.html")
     });
 
