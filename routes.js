@@ -10,6 +10,7 @@
 (get)/About=about page
 (get)/Booking=booking page
 (get)/api/bookings/:userId=booking for a specific user
+(get)/api/showing/:id=Find showing by id
 (get)/api/showings/:movieId=Find showings by a specific movie and shows cinema associated
 (get)/api/cinemas/=Find all cinemas
 (get)/api/movies/topRated/:page=get all top rated movies on page number
@@ -124,6 +125,16 @@ var routes = function () {
                 res.status(500).send("Unable to retrieve showings from database")
             }else{
                 res.status(200).send(showings)
+            }
+    })
+})
+router.get('/api/showing/:id',function(req,res){
+    var showingId=req.params.Id;
+        db.getShowingById(showingId,function(err,showing){
+            if(err){
+                res.status(500).send("Unable to retrieve showings from database")
+            }else{
+                res.status(200).send(showing)
             }
     })
 })
