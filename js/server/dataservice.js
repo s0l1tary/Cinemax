@@ -132,11 +132,11 @@ var database = {
         BookingModel.find({user:uid},callback);
     },
     getShowingsByMovieId:function(mid,callback){
-        ShowingModel.find({movieId:mid},callback)
+        ShowingModel.find({movieId:mid}).populate('cinemas').exec(callback);
     },
-    getCinemasByShowingId:function(sid,callback){
+    /*getCinemasByShowingId:function(sid,callback){
         CinemaModel.findOne({showing:sid},callback)
-    },
+    },*/
     getAllCinemas:function(callback){
         CinemaModel.find({},callback)
     },

@@ -11,6 +11,7 @@
 (get)/Booking=booking page
 (get)/api/bookings/:userId=booking for a specific user
 (get)/api/showings/:movieId=Find showings by a specific movie and shows cinema associated
+(get)/api/cinemas/=Find all cinemas
 (get)/api/movies/topRated/:page=get all top rated movies on page number
 (get)/api/movies/nowShowing/:page=get all top rated movies on page number
 (get)/api/movie/:id=get one particular movie
@@ -122,24 +123,8 @@ var routes = function () {
             if(err){
                 res.status(500).send("Unable to retrieve showings from database")
             }else{
-                var cinemaShowing=[];
-                for(i=0;i<showings.length;i++){
-                    var show=showings[i];
-                db.getCinemasByShowingId(showings[i]._id,function(err,cinemas){
-                    if(err){
-                        res.status(500).send("Unable to retrieve cinemas from database")
-                    }else{
-                    cinemaShowing.push(
-                        {
-                            cinemaName:cinemas.name,
-                            showing:show
-                        }
-                    ) 
-                    res.status(200).send(cinemaShowing);
-                    }
-                })
+                res.status(200).send(showings)
             }
-        }
     })
 })
 
