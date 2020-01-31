@@ -129,7 +129,7 @@ var routes = function () {
     })
 })
 router.get('/api/showing/:id',function(req,res){
-    var showingId=req.params.Id;
+    var showingId=req.params.id;
         db.getShowingById(showingId,function(err,showing){
             if(err){
                 res.status(500).send("Unable to retrieve showings from database")
