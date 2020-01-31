@@ -1,7 +1,6 @@
 /*
 Booking table
 UserID
-CinemaID
 ShowingID
 SnacksID
 
@@ -133,6 +132,9 @@ var database = {
     },
     getShowingsByMovieId:function(mid,callback){
         ShowingModel.find({movieId:mid}).populate('cinemas').exec(callback);
+    },
+    getShowingById:function(sid,callback){
+        ShowingModel.findOne({_id:sid}).populate('cinemas').exec(callback);
     },
     /*getCinemasByShowingId:function(sid,callback){
         CinemaModel.findOne({showing:sid},callback)
