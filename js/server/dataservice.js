@@ -137,6 +137,9 @@ var database = {
     getCinemasByShowingId:function(sid,callback){
         CinemaModel.findOne({showing:sid},callback)
     },
+    getAllCinemas:function(callback){
+        CinemaModel.find({},callback)
+    },
     addBooking: function (uid, cid, sid,snackIdArray, callback) {
         newBooking = new BookingModel({
             user: uid,

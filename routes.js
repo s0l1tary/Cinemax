@@ -106,6 +106,16 @@ var routes = function () {
         })
     });
 
+    router.get('/api/cinemas',function(req,res){
+        db.getAllCinemas(function(err,cinemas){
+            if(err){
+                res.status(500).send("Unable to retrieve cinemas from database")
+            }else{
+                res.status(200).send(cinemas)
+            }
+        })
+    })
+
     router.get('/api/showings/:movieId',function(req,res){
         var MovieId=req.params.movieId;
         db.getShowingsByMovieId(MovieId,function(err,showings){
@@ -116,6 +126,9 @@ var routes = function () {
                 for(i=0;i<showings.length;i++){
                     var show=showings[i];
                 db.getCinemasByShowingId(showings[i]._id,function(err,cinemas){
+                    if(err){
+                        res.status(500).send("Unable to retrieve cinemas from database")
+                    }else{
                     cinemaShowing.push(
                         {
                             cinemaName:cinemas.name,
@@ -123,6 +136,7 @@ var routes = function () {
                         }
                     ) 
                     res.status(200).send(cinemaShowing);
+                    }
                 })
             }
         }
