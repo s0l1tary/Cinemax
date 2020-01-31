@@ -11,7 +11,11 @@ $(document).ready(function () {
             console.log("/api/movie/"+movieId);
             $('.movieimage').attr("src","http://image.tmdb.org/t/p/w185/"+data.poster_path);
             $('.movietitle').append(data.title);
-            $('.movietagline').append("'"+data.tagline+"'");
+            if(data.tagline== null || data.tagline == "") {
+                $('.movietagline').append("");
+            } else {
+                $('.movietagline').append("'"+data.tagline+"'");
+            }
             $('.movieoverview').append(data.overview);
             $('.movieruntime').append(data.runtime+" minutes");
             $.each(data.genres, function(key,value) {
