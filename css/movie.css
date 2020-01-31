@@ -73,3 +73,36 @@ a {
     background-color: #4CAF50;
     border: none;
   }
+
+li button {
+    color: black;
+}
+
+.cinemalist {
+    width: 50%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.cinemalist button {
+    width: 200px;
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 10px 50px 10px 50px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+}
+
+.timeslotlist {
+    width: 50%;
+    float: right;
+    display: flex;
+    flex-direction: row;
+}

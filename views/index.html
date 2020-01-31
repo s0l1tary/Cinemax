@@ -70,7 +70,8 @@
           method: "get",
           dataType: "json"
         })
-        .done(function(data){
+        .done(
+          function(data){
           $('.headerTitle').text("Now Showing")
           $('.moviesTable').detach()
           $('.id1').after("<table class='moviesTable'><tr></tr></table>")
