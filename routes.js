@@ -9,8 +9,10 @@
 (get)/Promotion=promotion page
 (get)/About=about page
 (get)/Booking=booking page
+(post)/api/booking=create booking
 (get)/api/bookings/:userId=booking for a specific user
 (get)/api/showing/:id=Find showing by id
+(get)/api/showDates/:showings=Find unique dates for an array of showing ID(delete soon)
 (get)/api/showings/:movieId=Find showings by a specific movie and shows cinema associated
 (get)/api/cinemas/=Find all cinemas
 (get)/api/movies/topRated/:page=get all top rated movies on page number
@@ -84,6 +86,20 @@ var routes = function () {
     router.get('/Movie', function (req, res) {
         res.sendFile(__dirname + "/views/movie.html")
     });
+    router.get('/confirmBooking',function(req,res){
+        res.sendFile(__dirname+"/views/confirm.html")
+    })
+
+    router.post('/api/booking',function(req,res){
+        var data=req.body;
+        db.addBooking(data.userId,data.showingId,function(err,booking){
+            if(err){
+                res.status(500).send("Unable to add booking")
+            }else{
+                res.status(200).redirect("/confirmBooking?id="+booking._id)
+            }
+        })
+    }),
 
     router.get('/api/bookings/:userId',function(req,res){
         var userID=req.params.userId;
