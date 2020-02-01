@@ -130,6 +130,9 @@ var database = {
     getBookings:function(uid,callback){
         BookingModel.find({user:uid},callback);
     },
+    getBookingById:function(id,callback){
+        BookingModel.find({_id:id},callback);
+    },
     getShowingsByMovieId:function(mid,callback){
         ShowingModel.find({movieId:mid}).populate('cinemas').exec(callback);
     },
