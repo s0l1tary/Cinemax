@@ -6,8 +6,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cinemax - Booking</title>
         <link rel="stylesheet" href="../css/styles.css">
-        <script>
-        </script>
+        <link rel="stylesheet" href="../css/booking.css">
     </head>
 <body>
   <header>
@@ -28,13 +27,26 @@
         <li><a href="/About">About</a></li>
       </ul>
 </nav>
-    <h1 class = "headerTitle">Booking</h1>
-    <table class="bookingTable">
-    <tr>
+    <h1 class = "headerTitle">Seating Plan</h1>
+    <p style="margin:25px 100px 25px 100px;">You have selected <span class="movietitlespan"></span><br> at <span class="cinemanamespan"></span><br> on <span class="showdayspan"></span>,<span class="showtimespan"></span><br>Please select your seat(s):</p>
+    <form method="POST" action="/">
+      <table class="seatingTable">
+      <tr>
 
-    </tr>
-    </table>
+      </tr>
+      </table>
+      <div class="stupidbtn">
+        <button type = "submit" class="booknowBtn">Book Now</button>
+      </div>
+    </form>
+    <fieldset class="legend">
+      <legend style="font-size: 36px; padding: 10px; text-transform: uppercase;">Legend</legend>
+      <p><img class="blackbox">&nbsp;Occupied</p>
+      <p><img class="whitebox">&nbsp;Vacant</p>
+      <p><img class="bluebox">&nbsp;Selected</p>
+    </fieldset>
     <script src="../js/client/booking.js"></script>
+
 
 </body>
 </html>

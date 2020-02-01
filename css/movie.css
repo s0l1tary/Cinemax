@@ -18,7 +18,6 @@ hr {
 }
 
 .movieslots {
-    height: 600px;
     background-color: rgb(59, 59, 59);
 }
 
@@ -75,10 +74,15 @@ a {
   }
 
 .cinemalist {
-    width: 50%;
+    padding: 20px;
     float: left;
     display: flex;
     flex-direction: column;
+    background-color: rgb(50, 50, 50);
+}
+
+.cinemalist li {
+    padding: 20px;
 }
 
 .cinemalist button {
@@ -111,9 +115,10 @@ a {
 }
 
 .timeslotlist {
-    width: 50%;
-    float: right;
+    padding: 40px;
     display: flex;
     justify-content: space-around;
-    flex-direction: row;
+    flex-direction: column;
+    background-color: rgb(50, 50, 50);
 }
+

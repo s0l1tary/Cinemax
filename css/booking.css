@@ -1,0 +1,121 @@
+table {
+    width: 80%;
+    margin: auto;
+    padding: auto;
+    background-color: grey;
+  }
+
+  tr {
+    width: 100%;
+    height: 70px;
+    display:flex;
+    justify-content: space-around;
+  }
+
+.seatBtn {
+    margin:4px;
+    border-radius:4px;
+    overflow:auto;
+    float:left;
+}
+
+#vacantseat {
+    background-color:white;
+    color: black;
+}
+
+#occupiedseat label span{
+    color: white;
+}
+
+#occupiedseat {
+    background-color: black;
+    pointer-events: none;
+}
+
+.seatBtn label {
+    float:left;
+    width:4.0em;
+}
+
+.seatBtn label span {
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+    border-radius:4px;
+    color: black;
+}
+
+.seatBtn label input {
+    position:absolute;
+    top:-20px;
+}
+
+.seatBtn input:hover + span {
+    background-color:#efE0E0;
+}
+
+.seatBtn input:checked + span {
+    background-color: #668cff;
+    color:#fff;
+}
+
+.seatBtn input:checked:hover + span {
+    background-color: #668cff;
+    color:#fff;
+}
+
+.blackbox {
+    width: 20px;
+    height: 20px;
+    background-color :black;
+}
+
+.whitebox {
+    width: 20px;
+    height: 20px;
+    background-color : white;
+}
+
+.bluebox {
+    width: 20px;
+    height: 20px;
+    background-color: #668cff;
+}
+
+.legend {
+    width: 80%;
+    margin: auto;
+    padding: auto;
+    margin-bottom: 100px;
+}
+
+.legend p {
+    padding: 10px;
+}
+
+
+.booknowBtn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    display: flex;
+    margin: 20px;
+  }
+
+  .stupidbtn {
+      display: flex;
+      justify-content: center;
+  }
+
+  p span {
+      color: gold;
+      font-weight: bold;
+  }
