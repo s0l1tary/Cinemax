@@ -142,12 +142,20 @@ var database = {
     getAllCinemas:function(callback){
         CinemaModel.find({},callback)
     },
+    //older ver
     addBooking: function (uid, cid, sid,snackIdArray, callback) {
         newBooking = new BookingModel({
             user: uid,
             cinema: cid,
             showing: sid,
             snack: snackIdArray
+        });
+        newBooking.save(callback);
+    },
+    addBooking: function (uid, sid, callback) {
+        newBooking = new BookingModel({
+            user: uid,
+            showing: sid,
         });
         newBooking.save(callback);
     },
