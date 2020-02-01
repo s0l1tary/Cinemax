@@ -10,7 +10,6 @@
 (get)/About=about page
 (get)/Booking=booking page
 (post)/api/booking=create booking
-(get)/api/booking/:id=looking for specific booking
 (get)/api/bookings/:userId=booking for a specific user
 (get)/api/showing/:id=Find showing by id
 (get)/api/showDates/:showings=Find unique dates for an array of showing ID(delete soon)
@@ -97,7 +96,7 @@ var routes = function () {
             if(err){
                 res.status(500).send("Unable to add booking")
             }else{
-                res.status(200).redirect("/confirmBooking?id="+booking._id)
+                res.status(200).send(booking)
             }
         })
     }),
@@ -124,17 +123,6 @@ var routes = function () {
             }
         })
     });
-
-    router.get('/api/booking/:id',function(req,res){
-        var ID=req.params.id;
-        db.getBookingById(ID,function(err,booking){
-            if(err){
-                res.status(500).send("Unable to access bookings")
-            }else{
-                res.status(200).send(booking)
-            }
-        })
-    })
 
     router.get('/api/cinemas',function(req,res){
         db.getAllCinemas(function(err,cinemas){
