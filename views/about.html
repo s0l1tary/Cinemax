@@ -6,6 +6,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cinemax - About</title>
         <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/about.css">
         <script>
         </script>
     </head>
@@ -27,6 +28,81 @@
       <li><a href="/About">About</a></li>
     </ul>
   </nav>
-    <h1>About us</h1>
+    <h1 class="headerTitle">About us</h1>
+    <div class="aboutBox">Ever felt that you just couldn't find your ideal movie day out?
+      From deciding between the ideal timeslots to choosing the right Cinemas
+      at the right prices, there is just much to consider before finalizing
+      your booking! <br><br>
+      Cinemax aims to add more flexibility into your search results, intergrating
+      all movies being screen from our cinema partners, for easier convenience of
+      comparing of prices, locations and timings of your ideal movie booking.
+      We also display movies that you may have not heard of but may interest you
+      so you can find out more information about it.
+      You could purchase your tickets directly through Cinemax as the middle man
+      and we will set up all you need before your movie!
+    </div>
+
+    <div class="location" style="text-align: center;margin:auto;padding:auto;">
+      <p>1100 6th Ave, New York, NY 10036, United States</p>
+      <p>Located in: 42 St-Bryant Park Station</p>
+      <p>Q248+2G New York, United States</p>
+      <p>+1 212-512-1002</p>
+      <br><br>
+      <img src="../resources/map.PNG" style="width:800px;height:400px;">
+    </div>
+
+    <div class="others" style="display:flex;justify-content: space-around; margin:30px;">
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+  </div>
+
+</div>
+      <button class="privacyBtn">Privacy Policy</button>
+      <button class="termsBtn">Terms Of Use</button>
+    </div>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+      
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+      
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      </script>
+
 </body>
 </html>
