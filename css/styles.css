@@ -207,7 +207,7 @@ header {
     overflow-wrap: break-word;
   }
 
-  .privacyBtn, .termsBtn {
+  #privacyBtn, #termsBtn {
     border: none;
     background-color: #668cff;
     color: white;
