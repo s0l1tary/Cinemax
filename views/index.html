@@ -42,6 +42,12 @@
 
     <script>
       $(document).ready(function() {
+        var user;
+        if(sessionStorage.getItem('lid')!==null){
+          user=sessionStorage.getItem('lid');
+          $('.authentication').html(user.email);
+        }
+
         $.ajax({
           url: "/api/movies/nowShowing/1",
           method: "get",

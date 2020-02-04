@@ -1,35 +1,36 @@
 $(document).ready(function () {
-    $(".signupbtn").click(function(){
+    $(".signupbtn").on('click', (function(event){
         var credentials = {
             firstName: $("#FirstName").val(),
             lastName: $("#LastName").val(),
             gender: $("#Gender").val(),
-            dateOfBirth: $("DOB").val(),
-            contactNo: $("ContactNo").val(),
+            dateOfBirth: $("#DOB").val(),
+            contactNo: $("#ContactNo").val(),
             email: $("#LastName").val(),
-            password: $("#password").val(),
+            password: $("#Password").val(),
             rePassword: $("#RePassword").val()
         };
-        if(password!=repPassword){
-            alert("Confirm password and password not the same")
+        if(credentials.password===credentials.rePassword){
+            $.ajax(
+                {
+                    url: '/api/register',
+                    method: 'post',
+                    data: credentials
+                }
+                ).done(
+                    function (data) {
+                        $(".registrationMessage").text('Registration Success');
+                        sessionStorage.setItem('lid', data);
+                        location.href = '/'; 
+                    }
+                ).fail(
+                    function (err) {
+                        $(".registrationMessage").text(err.responseText);
+                    }
+                );
         }else{
-        $.ajax(
-            {
-                url: '/api/register',
-                method: 'post',
-                data: credentials
-            }
-            ).done(
-                function (data) {
-                    $(".registrationMessage").text('Registration Success');
-                    sessionStorage.setItem('lid', data);
-                    location.href = '/'; 
-                }
-            ).fail(
-                function (err) {
-                    $(".registrationMessage").text(err.responseText);
-                }
-            ); 
+            alert("Passwords do not match!")
         }
-    });
+    })
+    );
 });
