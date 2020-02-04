@@ -228,7 +228,7 @@ router.get('/api/showing/:id',function(req,res){
                 res.status(401).send("Cannot access user db");
             }
             else if (!user) {
-                db.register(data.firstName, data.lastName, data.gender, data.dateOfBirth, data.contactNumber, data.email, data.password, function (err, user) {
+                db.register(data.fname, data.lname, data.gender, data.dob, data.contactno, data.email, data.password, function (err, user) {
                     if (err) {
                         res.status(500).send("Unable to add a new user");
                     } else {
@@ -244,7 +244,7 @@ router.get('/api/showing/:id',function(req,res){
 
     router.post('/api/login', function (req, res) {
         var data = req.body;
-        db.login(data.email, data.password, function (err, user) {
+        db.login(data.loginemail, data.loginpassword, function (err, user) {
             if (err) {
                 res.status(401).send("Login fail. Please try again later");
             } else {

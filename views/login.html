@@ -28,16 +28,16 @@
       <li><a href="/About">About</a></li>
     </ul>
   </nav>
-    <form action="" style="border:1px solid #ccc" class="loginform">
+    <form action="/api/login" method="POST" style="border:1px solid #ccc" class="loginform">
         <div class="container">
           <h1>Login to your Cinemax member account</h1>
           <fieldset>
 
             <label for="email">Email</label>
-            <input type="email" name="loginemail" required>
+            <input type="email" id="loginemail" name="loginemail" required>
 
             <label for="password">Password</label>
-            <input type="password" name="loginpassword" required>
+            <input type="password" id="loginpassword" name="loginpassword" required>
 
           </fieldset>
           <div class="clearfix">
