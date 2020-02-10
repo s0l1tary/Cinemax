@@ -38,7 +38,10 @@ $(document).ready(function () {
                         user=sessionStorage.getItem('lid');
                         var storedAccount=JSON.parse(user);
                         $("#userHidden").val(storedAccount._id);
-                      }
+                    } else {
+                        alertLogin();
+                        window.location.href="/Login";
+                    }
 
                 var counter = 0;
                 $.each(data.seats, function(key,value) {
@@ -61,7 +64,11 @@ $(document).ready(function () {
                 });
         }).fail(
             function (err) {
-                alert("error");
-            })
+                alert("You noob!");
+    })
+
+    function alertLogin() {
+        alert("Please log in before booking!");
+    }
 
 });

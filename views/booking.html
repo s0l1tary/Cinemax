@@ -38,7 +38,7 @@
       <div class="stupidbtn">
         <input type="hidden" value="" id="showingHidden" name="showingId">
         <input type="hidden" value="" id="userHidden" name="userId">
-        <button type = "submit" class="booknowBtn">Book Now</button>
+        <button type = "submit" class="booknowBtn" onclick="return checkLogin()">Book Now</button>
       </div>
     </form>
     <fieldset class="legend">
@@ -48,6 +48,13 @@
       <p><img class="bluebox">&nbsp;Selected</p>
     </fieldset>
     <script src="../js/client/booking.js"></script>
+    <script>
+      function checkLogin() {
+        if(sessionStorage.getItem('lid')==null){
+          alert("Please login before booking!");
+          window.location.href="/Login";
+        }
+    </script>
 
 
 </body>
