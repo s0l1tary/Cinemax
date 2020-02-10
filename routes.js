@@ -260,7 +260,7 @@ router.get('/api/showing/:id',function(req,res){
 
     router.post('/api/login', function (req, res) {
         var data = req.body;
-        db.login(data.loginemail, data.loginpassword, function (err, user) {
+        db.login(data.username, data.password, function (err, user) {
             if (err) {
                 res.status(401).send("Login fail. Please try again later");
             } else {

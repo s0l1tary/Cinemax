@@ -6,7 +6,7 @@ $(document).ready(function () {
         };
         $.ajax(
             {
-                url: '/login',
+                url: '/api/login',
                 method: 'post',
                 data: credentials
             }
@@ -14,7 +14,7 @@ $(document).ready(function () {
                 function (data) {
                     $(".loginMessage").text('Login Success');
                     $(".logoutBtn").show();
-                    sessionStorage.setItem('oid', data);
+                    sessionStorage.setItem('lid', JSON.stringify(data));
                     location.href = '/'; 
                 }
             ).fail(
