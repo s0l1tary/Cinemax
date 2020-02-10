@@ -15,7 +15,6 @@ $(document).ready(function () {
             }).done(
                 function(data) {
                     $(".movietitlespan").text(data.title);
-                    $(".cinemanamespan").text(data.cinema.name+" "+data.cinema.branch);
             }).fail(
                 function(err) {
                     $(".movietitlespan").text("error");
@@ -33,20 +32,28 @@ $(document).ready(function () {
                     var showday = weekday[date.getDay()];
                     $(".showdayspan").text(showday+ " ("+(date.toISOString().slice(0,10))+") ");
                     $(".showtimespan").text(data.timing.Time);
+                    $(".cinemanamespan").text(data.cinema.name+" - "+data.cinema.branch);
+                    $("#showingHidden").val(showingId);
+                    if(sessionStorage.getItem('lid')!==null){
+                        user=sessionStorage.getItem('lid');
+                        var storedAccount=JSON.parse(user);
+                        $("#userHidden").val(storedAccount._id);
+                      }
+
                 var counter = 0;
                 $.each(data.seats, function(key,value) {
                 if(counter>4){
                     if (value.status == true) {
-                        $('.seatingTable > tbody:last-child').append("<tr><td><div class=\"seatBtn\" id=\"vacantseat\"><label><input type=\"checkbox\" value="+value.seatNo+"><span>"+value.seatNo+"</span></input></label></div></td></tr>")
+                        $('.seatingTable > tbody:last-child').append("<tr><td><div class=\"seatBtn\" id=\"vacantseat\"><label><input type=\"checkbox\" name=\"seatTaken\" value="+value.seatNo+"><span>"+value.seatNo+"</span></input></label></div></td></tr>")
                     } else {
-                        $('.seatingTable > tbody:last-child').append("<tr><td><div class=\"seatBtn\" id=\"occupiedseat\"><label><input type=\"checkbox\" value="+value.seatNo+" disabled><span>"+value.seatNo+"</span></input></label></div></td></tr>")
+                        $('.seatingTable > tbody:last-child').append("<tr><td><div class=\"seatBtn\" id=\"occupiedseat\"><label><input type=\"checkbox\" name=\"seatTaken\" value="+value.seatNo+" disabled><span>"+value.seatNo+"</span></input></label></div></td></tr>")
                     }
                      counter=0;
                     }else{
                         if (value.status == true) {
-                            $('.seatingTable tr:last').append("<td><div class=\"seatBtn\" id=\"vacantseat\"><label><input type=\"checkbox\" value="+value.seatNo+"><span>"+value.seatNo+"</span></input></label></div></td>");
+                            $('.seatingTable tr:last').append("<td><div class=\"seatBtn\" id=\"vacantseat\"><label><input type=\"checkbox\" name=\"seatTaken\" value="+value.seatNo+"><span>"+value.seatNo+"</span></input></label></div></td>");
                         } else {
-                            $('.seatingTable tr:last').append("<td><div class=\"seatBtn\" id=\"occupiedseat\"><label><input type=\"checkbox\" value="+value.seatNo+" disabled><span>"+value.seatNo+"</span></input></label></div></td>");
+                            $('.seatingTable tr:last').append("<td><div class=\"seatBtn\" id=\"occupiedseat\"><label><input type=\"checkbox\" name=\"seatTaken\" value="+value.seatNo+" disabled><span>"+value.seatNo+"</span></input></label></div></td>");
                         }
                     counter++;
                     }

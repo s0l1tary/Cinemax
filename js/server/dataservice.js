@@ -54,20 +54,10 @@ var database = {
                         type: schema.Types.ObjectId,
                         ref: 'User'
                     },
-                    cinema: {
-                        type: schema.Types.ObjectId,
-                        ref: 'Cinema'
-                    },
                     showing: {
                         type: schema.Types.ObjectId,
                         ref: 'Showing'
                     },
-                    snack: [
-                        {
-                            type: schema.Types.ObjectId,
-                            ref:'Snack'
-                        }
-                    ]
 
                 });
                 cinemaSchema = schema({
@@ -92,7 +82,11 @@ var database = {
                             seatNo:String,
                             status:Boolean
                         }
-                    ]
+                    ],
+                    cinema: {
+                        type: schema.Types.ObjectId,
+                        ref: 'Cinema'
+                    },
                 })
                 snackSchema = schema({
                     name: String,
@@ -133,11 +127,14 @@ var database = {
     getBookings:function(uid,callback){
         BookingModel.find({user:uid},callback);
     },
+    updateSeating:function(ShowingID,seatNo,changeTo,callback){
+        ShowingModel.updateOne({_id : ShowingID, "seats.seatNo" :seatNo}, {$set: {"seats.status" : changeTo}}, callback);
+    },
     getShowingsByMovieId:function(mid,callback){
-        ShowingModel.find({movieId:mid}).populate('cinemas').exec(callback);
+        ShowingModel.find({movieId:mid}).populate('cinema').exec(callback);
     },
     getShowingById:function(sid,callback){
-        ShowingModel.findOne({_id:sid}).populate('cinemas').exec(callback);
+        ShowingModel.findOne({_id:sid}).populate('cinema').exec(callback);
     },
     /*getCinemasByShowingId:function(sid,callback){
         CinemaModel.findOne({showing:sid},callback)
@@ -146,7 +143,7 @@ var database = {
         CinemaModel.find({},callback)
     },
     //older ver
-    addBooking: function (uid, cid, sid,snackIdArray, callback) {
+    /*addBooking: function (uid, cid, sid,snackIdArray, callback) {
         newBooking = new BookingModel({
             user: uid,
             cinema: cid,
@@ -154,7 +151,7 @@ var database = {
             snack: snackIdArray
         });
         newBooking.save(callback);
-    },
+    },*/
     addBooking: function (uid, sid, callback) {
         newBooking = new BookingModel({
             user: uid,

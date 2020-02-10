@@ -27,7 +27,7 @@ function getBookings(cinema,movieId) {
                 $('.timeslotlist').empty();
                 var dates=[];
                 $.each(data, function (key, value) { 
-                    if (value.cinemaId == cinema) { 
+                    if (value.cinema._id == cinema) { 
                         dates.push(value.timing.Date)
                     }; 
                 });
@@ -46,7 +46,7 @@ function getBookings(cinema,movieId) {
                     data.sort((a, b) => a.timing.Date.localeCompare(b.timing.Date) || a.timing.Time.localeCompare(b.timing.Time));
                     $.each(data,function(key,showing){
                         if(showing.timing.Date==unique){
-                            $('.timeslotlist').append("<li><button><a href=/Booking?showingId="+showing._id+">"+showing.timing.Time+"</a></button></li>");
+                            $('.timeslotlist').append("<li><a href=/Booking?showingId="+showing._id+"><button>"+showing.timing.Time+"</button></a></li>");
                         }
                     })
                 })

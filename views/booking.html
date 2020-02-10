@@ -29,13 +29,15 @@
 </nav>
     <h1 class = "headerTitle">Seating Plan</h1>
     <p style="margin:25px 100px 25px 100px;">You have selected <span class="movietitlespan"></span><br> at <span class="cinemanamespan"></span><br> on <span class="showdayspan"></span>,<span class="showtimespan"></span><br>Please select your seat(s):</p>
-    <form method="POST" action="/">
+    <form method="POST" action="/api/booking">
       <table class="seatingTable">
       <tr>
 
       </tr>
       </table>
       <div class="stupidbtn">
+        <input type="hidden" value="" id="showingHidden" name="showingId">
+        <input type="hidden" value="" id="userHidden" name="userId">
         <button type = "submit" class="booknowBtn">Book Now</button>
       </div>
     </form>

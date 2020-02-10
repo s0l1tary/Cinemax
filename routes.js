@@ -92,13 +92,29 @@ var routes = function () {
 
     router.post('/api/booking',function(req,res){
         var data=req.body;
-        db.addBooking(data.userId,data.showingId,function(err,booking){
-            if(err){
-                res.status(500).send("Unable to add booking")
-            }else{
-                res.status(200).send(booking)
-            }
-        })
+        var seatList=data.seatTaken;
+        var status = false
+        console.log(data)
+    db.addBooking(data.userId,data.showingId,function(err,booking){
+        if(err){
+            res.status(500).send("Unable to add booking")
+        }else{
+            for(i=0;i<seatList.length;i++) {
+                console.log(data.showingId)
+                console.log(seatList[i])
+                console.log(status)
+                db.updateSeating(data.showingId,seatList[i],status,function(err,seat){
+                    if(err){
+                        res.status(500).send("Unable to update seats")
+                    }
+                    else{
+                        res.status(200).send(booking)
+                    }
+            })
+        }
+    
+        }
+    })
     }),
 
     router.get('/api/bookings/:userId',function(req,res){
