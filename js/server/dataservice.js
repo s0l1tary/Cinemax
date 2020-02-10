@@ -122,7 +122,7 @@ var database = {
             email: e,
             password: md5(p)
         });
-        newUser.save(callback);
+        newUser.save(newUser);
     },
     login: function (e, p, callback) {
         UserModel.findOne({ email: e, password: md5(p) }, callback)

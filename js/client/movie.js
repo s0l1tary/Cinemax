@@ -3,7 +3,7 @@ $(document).ready(function () {
     if(sessionStorage.getItem('lid')!==null){
     
         user=sessionStorage.getItem('lid');
-        $('.authentication').html(user.email);
+        $('.authentication').html("Welcome" +user.email);
     }
     var URLParams = new URLSearchParams(window.location.search);
     var movieId = URLParams.get('id');
