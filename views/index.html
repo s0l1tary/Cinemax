@@ -45,7 +45,8 @@
         var user;
         if(sessionStorage.getItem('lid')!==null){
           user=sessionStorage.getItem('lid');
-          $('.authentication').html("Welcome"+user);
+          var storedAccount=JSON.parse(user);
+          $('.authentication').html("Welcome "+storedAccount.firstName);
         }
 
         $.ajax({

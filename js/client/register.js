@@ -5,7 +5,7 @@ function validation() {
         gender: $("#Gender").val(),
         dateOfBirth: $("#DOB").val(),
         contactNo: $("#ContactNo").val(),
-        email: $("#LastName").val(),
+        email: $("#Email").val(),
         password: $("#Password").val(),
         rePassword: $("#RePassword").val()
     };
@@ -19,13 +19,21 @@ function validation() {
             }
             ).done(
                 function (data) {
-                    $(".registrationMessage").text('Registration Success');
-                    sessionStorage.setItem('lid', data);
-                    location.href = '/'; 
+                    if(status=200){
+                        $(".registrationMessage").text('Registration Success');
+                        console.log(data);
+                        sessionStorage.setItem('lid', JSON.stringify(data));
+                        location.href = '/'; 
+                    }
+                
                 }
             ).fail(
                 function (err) {
-                    $(".registrationMessage").text(err.responseText);
+                    if(status=500){
+                        alert("User already exists")
+                    }else{
+                        alert(err.responseText)
+                    }
                 }
             );
     }else{

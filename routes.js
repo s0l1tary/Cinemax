@@ -227,10 +227,7 @@ router.get('/api/showing/:id',function(req,res){
             if (err) {
                 res.status(401).send("Cannot access user db");
             }
-            else if (user) {
-                res.status(500).send("User already exists");
-            }
-            else{
+            else if (!user) {
                 db.register(data.firstName, data.lastName, data.gender, data.dateOfBirth, data.contactNo, data.email, data.password, function (err, user) {
                     if (err) {
                         res.status(500).send("Unable to add a new user");
@@ -238,6 +235,9 @@ router.get('/api/showing/:id',function(req,res){
                         res.status(200).send(user);
                     }
                 })
+            }
+            else{
+                res.status(500).send("User already exists");
             }
         })
     });
@@ -256,17 +256,6 @@ router.get('/api/showing/:id',function(req,res){
             }
         })
     });
-
-    router.get('/api/logout', function (req,res) {
-        db.logout(function (err) {
-            if(err) {
-                res.status(401).send("Error logging out");
-            } else {
-                alert("You have been logged out");
-                window.location.href="/"
-            }
-        }); 
-    })
 
     return router;
 };
