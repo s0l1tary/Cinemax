@@ -257,6 +257,17 @@ router.get('/api/showing/:id',function(req,res){
         })
     });
 
+    router.get('/api/logout', function (req,res) {
+        db.logout(function (err) {
+            if(err) {
+                res.status(401).send("Error logging out");
+            } else {
+                alert("You have been logged out");
+                window.location.href="/"
+            }
+        }); 
+    })
+
     return router;
 };
 

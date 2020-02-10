@@ -4,6 +4,7 @@ $(document).ready(function () {
     
         user=sessionStorage.getItem('lid');
         $('.authentication').html("Welcome" +user.email);
+        $('.authentication').append("<br><button onclick=\"window.location.href='/api/register'\">Logout</button>");
     }
     var URLParams = new URLSearchParams(window.location.search);
     var movieId = URLParams.get('id');
