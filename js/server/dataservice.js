@@ -127,6 +127,9 @@ var database = {
     login: function (e, p, callback) {
         UserModel.findOne({ email: e, password: md5(p) }, callback)
     },
+    logout: function(callback) {
+        db.logout({});
+    },
     getBookings:function(uid,callback){
         BookingModel.find({user:uid},callback);
     },

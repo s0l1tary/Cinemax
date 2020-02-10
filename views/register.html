@@ -30,7 +30,7 @@
       <li><a href="/About">About</a></li>
     </ul>
   </nav>
-    <section style="border:1px solid #ccc" class="regform">
+    <form action="/api/register" method="POST" style="border:1px solid #ccc" id="regform" onsubmit="return validation()">
         <div class="container">
           <h1>Sign Up</h1>
             <p>Please fill in this form with the following information to sign up for your Cinemax membership.</p>
@@ -80,11 +80,11 @@
           </label>
           <br><br>
           <div class="clearfix">
-            <input type="button" class="cancelbtn" value="Cancel"></input>
-            <input type="button" class="signupbtn" value="Sign Up"></input>
+            <input type= "reset" class="cancelbtn" value="Cancel"></input>
+            <input type= "submit" class="signupbtn" value="Sign Up"></input>
           </div>
         </div>
 
-      </section>
+      </form>
 </body>
 </html>
