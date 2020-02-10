@@ -86,135 +86,129 @@ var routes = function () {
     router.get('/Movie', function (req, res) {
         res.sendFile(__dirname + "/views/movie.html")
     });
-    router.get('/confirmBooking',function(req,res){
-        res.sendFile(__dirname+"/views/confirm.html")
+    router.get('/confirmBooking', function (req, res) {
+        res.sendFile(__dirname + "/views/confirm.html")
     })
 
-    router.post('/api/booking',function(req,res){
-        var data=req.body;
-        var seatList=data.seatTaken;
+    router.post('/api/booking', function (req, res) {
+        var data = req.body;
+        var seatList = data.seatTaken;
         var status = false
         console.log(data)
-    db.addBooking(data.userId,data.showingId,function(err,booking){
-        if(err){
-            res.status(500).send("Unable to add booking")
-        }else{
-            for(i=0;i<seatList.length;i++) {
-                console.log(data.showingId)
-                console.log(seatList[i])
-                console.log(status)
-                db.updateSeating(data.showingId,seatList[i],status,function(err,seat){
-                    if(err){
-                        res.status(500).send("Unable to update seats")
+        db.addBooking(data.userId, data.showingId,data.seatTaken, function (err, booking) {
+            if (err) {
+                res.status(500).send("Unable to add booking")
+            } else {
+                if (Array.isArray(data.seatTaken)) {
+                    for (i = 0; i < data.seatTaken.length; i++) {
+                        db.updateSeating(data.showingId, data.seatTaken[i], status, function (err, seat) {
+                            if (err) {
+                                res.status(500).send("Unable to update seats")
+                            }
+                        })
                     }
-                    else{
-                        res.status(200).send(booking)
-                    }
-            })
-        }
-    
-        }
-    })
-    }),
-
-    router.get('/api/bookings/:userId',function(req,res){
-        var userID=req.params.userId;
-        db.getBookings(userID,function(req,res){
-            if(err){
-                res.status(500).send("Unable to access bookings")
-            }else{
-                res.status(200).send(bookings);
+                    res.status(200).send(booking);
+                } else {
+                    db.updateSeating(data.showingId, data.seatTaken, status, function (err, seat) {
+                        if (err) {
+                            res.status(500).send("Unable to update seats")
+                        }else{
+                            res.status(200).send(seat);
+                        }
+                    })
+                }
+                
             }
         })
-    });
+    }),
 
-    router.delete('/api/booking/:id',function(req,res){
-        var ID=req.params.id;
-        db.cancelBooking(ID,function(err,Booking){
-            if(err){
+        router.get('/api/bookings/:userId', function (req, res) {
+            var userID = req.params.userId;
+            db.getBookings(userID, function (req, res) {
+                if (err) {
+                    res.status(500).send("Unable to access bookings")
+                } else {
+                    res.status(200).send(bookings);
+                }
+            })
+        });
+
+    router.delete('/api/booking/:id', function (req, res) {
+        var ID = req.params.id;
+        db.cancelBooking(ID, function (err, Booking) {
+            if (err) {
                 res.status(500).send("Unable to cancel booking")
             }
-            else{
+            else {
                 res.status(200).send("Booking deleted")
             }
         })
     });
 
-    router.get('/api/cinemas',function(req,res){
-        db.getAllCinemas(function(err,cinemas){
-            if(err){
+    router.get('/api/cinemas', function (req, res) {
+        db.getAllCinemas(function (err, cinemas) {
+            if (err) {
                 res.status(500).send("Unable to retrieve cinemas from database")
-            }else{
+            } else {
                 res.status(200).send(cinemas)
             }
         })
     })
 
-    router.get('/api/showings/:movieId',function(req,res){
-        var MovieId=req.params.movieId;
-        db.getShowingsByMovieId(MovieId,function(err,showings){
-            if(err){
+    router.get('/api/showings/:movieId', function (req, res) {
+        var MovieId = req.params.movieId;
+        db.getShowingsByMovieId(MovieId, function (err, showings) {
+            if (err) {
                 res.status(500).send("Unable to retrieve showings from database")
-            }else{
+            } else {
                 res.status(200).send(showings)
             }
+        })
     })
-})
-router.get('/api/showing/:id',function(req,res){
-    var showingId=req.params.id;
-        db.getShowingById(showingId,function(err,showing){
-            if(err){
+    router.get('/api/showing/:id', function (req, res) {
+        var showingId = req.params.id;
+        db.getShowingById(showingId, function (err, showing) {
+            if (err) {
                 res.status(500).send("Unable to retrieve showings from database")
-            }else{
+            } else {
                 res.status(200).send(showing)
             }
+        })
     })
-})
 
-    router.get('/api/user/:id',function(req,res){
-        var ID=req.params.id;
-        db.getUser(ID,function(err,user){
-            if(err){
+    router.get('/api/user/:id', function (req, res) {
+        var ID = req.params.id;
+        db.getUser(ID, function (err, user) {
+            if (err) {
                 res.status(500).send("Unable to retrieve user details")
-            }else{
+            } else {
                 res.status(200).send(user)
             }
         })
     });
 
-    router.put('/api/user',function(req,res){
-        var data=req.body;
-        db.editUser(data.id,data.firstName,data.lastName,data.gender,data.dateOfBirth,contactNumber,email,password,function(err,user){
-            if(err){
+    router.put('/api/user', function (req, res) {
+        var data = req.body;
+        db.editUser(data.id, data.firstName, data.lastName, data.gender, data.dateOfBirth, contactNumber, email, password, function (err, user) {
+            if (err) {
                 res.status(500).send("Unable to edit user")
-            }else{
+            } else {
                 res.status(200).send("User particulars updated")
             }
         })
     });
 
-    router.put('/api/snacks',function(req,res){
-        var data=req.body;
-        db.editSnacks(data.bId,data.snackIDArray,function(err,snacks){
-            if(err){
+    router.put('/api/snacks', function (req, res) {
+        var data = req.body;
+        db.editSnacks(data.bId, data.snackIDArray, function (err, snacks) {
+            if (err) {
                 res.status(500).send("Unable to set snack")
-            }else{
+            } else {
                 res.status(200).send("Snacks booked updated")
             }
         })
     });
 
-    router.post('/api/bookings', function (req, res) {
-        var data = req.body;
-        db.addBooking(data.userID, data.cinemaID, data.showingID, data.snackID, function (err, booking) {
-            if (err) {
-                res.status(500).send("Unable to add a new booking");
-            }
-            else {
-                res.status(200).send(booking);
-            }
-        })
-    });
 
     router.get('/api/movies/topRated/:page', function (req, res) {
         var page = req.params.page
@@ -226,8 +220,8 @@ router.get('/api/showing/:id',function(req,res){
         res.redirect("https://api.themoviedb.org/3/movie/now_playing?api_key=8d60f5ca8cb6f731fd8ecf886b9c8ad0&language=en-US&page=" + page)
     });
 
-    router.get('/api/movies/upcoming/:page',function(req,res){
-        var page=req.params.page
+    router.get('/api/movies/upcoming/:page', function (req, res) {
+        var page = req.params.page
         res.redirect("https://api.themoviedb.org/3/movie/upcoming?api_key=8d60f5ca8cb6f731fd8ecf886b9c8ad0&language=en-US&page=" + page)
     });
 
@@ -252,7 +246,7 @@ router.get('/api/showing/:id',function(req,res){
                     }
                 })
             }
-            else{
+            else {
                 res.status(500).send("User already exists");
             }
         })

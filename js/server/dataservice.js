@@ -58,6 +58,7 @@ var database = {
                         type: schema.Types.ObjectId,
                         ref: 'Showing'
                     },
+                    seats:[String]
 
                 });
                 cinemaSchema = schema({
@@ -128,7 +129,7 @@ var database = {
         BookingModel.find({user:uid},callback);
     },
     updateSeating:function(ShowingID,seatNo,changeTo,callback){
-        ShowingModel.updateOne({_id : ShowingID, "seats.seatNo" :seatNo}, {$set: {"seats.status" : changeTo}}, callback);
+        ShowingModel.updateOne({_id : ShowingID, 'seats.seatNo' :seatNo}, {$set: {"seats.$.status" : changeTo}}, callback);
     },
     getShowingsByMovieId:function(mid,callback){
         ShowingModel.find({movieId:mid}).populate('cinema').exec(callback);
@@ -152,10 +153,11 @@ var database = {
         });
         newBooking.save(callback);
     },*/
-    addBooking: function (uid, sid, callback) {
+    addBooking: function (uid, sid,sa,callback) {
         newBooking = new BookingModel({
             user: uid,
             showing: sid,
+            seats:sa
         });
         newBooking.save(callback);
     },
