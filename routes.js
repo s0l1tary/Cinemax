@@ -123,7 +123,7 @@ var routes = function () {
                             }
                         })
                     }
-                    res.status(200).send(booking);
+                    res.status(200).redirect("/BookingConfirmed");
                 } else {
                     db.updateSeating(data.showingId, data.seatTaken, status, function (err, seat) {
                         if (err) {
@@ -156,7 +156,15 @@ var routes = function () {
                 res.status(500).send("Unable to cancel booking")
             }
             else {
-                res.status(200).send(Booking)
+                console.log(Booking)
+                for(i=0;i<Booking.seats.length;i++){
+                db.updateSeating(Booking.showing,Booking.seats[i],true,function(err,seat){
+                    if(err){
+                        res.status(500).send("error updating seat")
+                    }
+                })
+            }
+            res.status(200).send(Booking)
             }
         })
     });
