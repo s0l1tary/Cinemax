@@ -1,14 +1,14 @@
 $(document).ready(function () {
     var URLParams = new URLSearchParams(window.location.search);
     var showingId = URLParams.get('showingId');
-    // var user;
-    // if(sessionStorage.getItem('lid')!==null){
+    var user;
+    if(sessionStorage.getItem('lid')!==null){
         
-    //     user=JSON.parse(sessionStorage.getItem('lid'));
-    //     $('.authentication').html("<p>Welcome " +user.firstName+"<p>");
-    //     $('.authentication').append("<button class=\"profilebtn\" onclick=\"location.href='/profile'\">Profile</button>")
-    //     $('.authentication').append("<button class=\"logoutbtn\" onclick=\"logout()\">Logout</button>");
-    // }
+        user=JSON.parse(sessionStorage.getItem('lid'));
+        $('.authentication').html("<p style=\"text-align:center;\">Welcome " +user.firstName+"<p>");
+            $('.authentication').append("<button class=\"profilebtn\" onclick=\"location.href='/profile'\">Profile</button>")
+            $('.authentication').append("<button class=\"logoutbtn\" onclick=\"logout()\">Logout</button>");
+    }
     $.ajax({
         url: "/api/showing/"+showingId,
         method: "get",

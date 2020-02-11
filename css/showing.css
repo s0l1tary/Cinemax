@@ -1,0 +1,19 @@
+.ShowingSection {
+    margin: 50px;
+    background-color: white;
+    padding: 10px;
+}
+
+.ShowingSection p {
+    color: black;
+}
+
+.ShowingSection button {
+    padding: 5px;
+    margin: 5px;
+    color: black;
+}
+
+.ShowingSection b {
+    color: black;
+}

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cinemax - Movies</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/showing.css">
     <script>
     </script>
 </head>
@@ -37,6 +38,14 @@
 
     <script>
         $(document).ready(function () {
+            var user;
+            if(sessionStorage.getItem('lid')!==null){
+        
+                user=JSON.parse(sessionStorage.getItem('lid'));
+                $('.authentication').html("<p style=\"text-align:center;\">Welcome " +user.firstName+"<p>");
+                $('.authentication').append("<button class=\"profilebtn\" onclick=\"location.href='/profile'\">Profile</button>")
+                $('.authentication').append("<button class=\"logoutbtn\" onclick=\"logout()\">Logout</button>");
+            }
         var URLParams = new URLSearchParams(window.location.search);
     var userId = URLParams.get('id');
         $.ajax(
@@ -55,7 +64,7 @@
                         dataType: "json"
                     }).done(
                         function (data) {
-                            $(".ShowingSection").append("<p>Movie:" + data.title+ " Seats:"+value.seats+"<button onclick=\"deleteShowing('"+value._id+"')\">Cancel booking</button</p>");
+                            $(".ShowingSection").append("<p><b>Movie:</b>" + data.title+ ", <b>Seats:</b>"+value.seats+", <b>Timing:</b> "+value.showing.timing.Date+ " - "+value.showing.timing.Time+ " <button onclick=\"deleteShowing('"+value._id+"')\">Cancel booking</button</p>");
                         }
                     ).fail(
                         function (err) {
@@ -85,6 +94,10 @@
                     )
                     location.reload();
         }
+        function logout(){
+            sessionStorage.clear();
+            location.href="/"
+}
     </script>
 </body>
 
