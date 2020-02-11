@@ -6,7 +6,40 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cinemax - Profile</title>
         <link rel="stylesheet" href="../css/styles.css">
+        <script src="../js/client/jquery-3.4.1.min.js"></script>
         <script>
+          $(document).ready(function() {
+          var user;
+        if(sessionStorage.getItem('lid')!==null){
+    
+    user=JSON.parse(sessionStorage.getItem('lid'));
+    $('.authentication').html("Welcome " +user.email);
+    $('.authentication').append("<br><button onclick=\"location.href='/profile'\">View Profile</button>")
+    $('.authentication').append("<button onclick=\"logout()\">Logout</button>");
+}
+$.ajax({
+        url: "/api/profileDetails/"+user._id,
+        method: "get",
+        dataType: "json"
+    }).done(
+        function (data) {
+                $("#fnField").append(data.firstName)
+                $("#lnField").append(data.lastName)
+                $("#gField").append(data.gender)
+                $("#dobField").append(data.dateOfBirth)
+                $("#cnField").append(data.contactNumber)
+                $("#eField").append(data.email)
+
+    }).fail(
+        function(err){
+          alert("error");
+        }
+    )
+          });
+function logout(){
+    sessionStorage.clear();
+    location.href="/"
+}
         </script>
     </head>
 <body>
@@ -28,5 +61,14 @@
   </ul>
 </nav>
     <h1>Profile</h1>
+    <section id="profileDetails">
+      <span>First Name:</span><span id="fnField"></span>
+      <span>Last Name:</span><span id="lnField"></span>
+      <span>Gender:</span><span id="gField"></span>
+      <span>Date of birth:</span><span id="dobField"></span>
+      <span>Contact Number:</span><span id="cnField"></span>
+      <span>Email:</span><span id="eField"></span>
+    </section>
+    <button onclick="location.href='/'"></button>
 </body>
 </html>

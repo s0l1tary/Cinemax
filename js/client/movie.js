@@ -1,11 +1,12 @@
 $(document).ready(function () {
     var user;
-    if(sessionStorage.getItem('lid')!==null){
+        if(sessionStorage.getItem('lid')!==null){
     
-        user=sessionStorage.getItem('lid');
-        $('.authentication').html("Welcome" +user.email);
-        $('.authentication').append("<br><button onclick=\"window.location.href='/api/register'\">Logout</button>");
-    }
+    user=JSON.parse(sessionStorage.getItem('lid'));
+    $('.authentication').html("Welcome " +user.email);
+    $('.authentication').append("<br><button onclick=\"location.href='/profile'\">View Profile</button>")
+    $('.authentication').append("<button onclick=\"logout()\">Logout</button>");
+}
     var URLParams = new URLSearchParams(window.location.search);
     var movieId = URLParams.get('id');
 
@@ -50,3 +51,8 @@ $(document).ready(function () {
         }
     )
 });
+
+function logout(){
+    sessionStorage.clear();
+    location.href="/"
+}

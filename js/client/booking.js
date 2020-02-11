@@ -2,6 +2,15 @@ $(document).ready(function () {
     var URLParams = new URLSearchParams(window.location.search);
     var showingId = URLParams.get('showingId');
 
+    var user;
+        if(sessionStorage.getItem('lid')!==null){
+    
+    user=JSON.parse(sessionStorage.getItem('lid'));
+    $('.authentication').html("Welcome " +user.email);
+    $('.authentication').append("<br><button onclick=\"location.href='/profile'\">View Profile</button>")
+    $('.authentication').append("<button onclick=\"logout()\">Logout</button>");
+}
+
     $.ajax({
         url: "/api/showing/"+showingId,
         method: "get",
@@ -67,8 +76,11 @@ $(document).ready(function () {
                 alert("You noob!");
     })
 
-    function alertLogin() {
-        alert("Please log in before booking!");
-    }
-
 });
+function logout(){
+    sessionStorage.clear();
+    location.href="/"
+}
+function alertLogin() {
+    alert("Please log in before booking!");
+}

@@ -6,7 +6,23 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cinemax - Promotions</title>
         <link rel="stylesheet" href="../css/styles.css">
-        <link rel="stylesheet" href="../css/promotions.css">
+        <script src="../js/client/jquery-3.4.1.min.js"></script>
+        <script>
+          $(document).ready(function() {
+          var user;
+        if(sessionStorage.getItem('lid')!==null){
+    
+    user=JSON.parse(sessionStorage.getItem('lid'));
+    $('.authentication').html("Welcome " +user.email);
+    $('.authentication').append("<br><button onclick=\"location.href='/profile'\">View Profile</button>")
+    $('.authentication').append("<button onclick=\"logout()\">Logout</button>");
+}
+          });
+function logout(){
+    sessionStorage.clear();
+    location.href="/"
+}
+        </script>
     </head>
 <body>
   <header>

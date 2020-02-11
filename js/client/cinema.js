@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    var user;
+        if(sessionStorage.getItem('lid')!==null){
+    
+    user=JSON.parse(sessionStorage.getItem('lid'));
+    $('.authentication').html("Welcome " +user.email);
+    $('.authentication').append("<br><button onclick=\"location.href='/profile'\">View Profile</button>")
+    $('.authentication').append("<button onclick=\"logout()\">Logout</button>");
+}
     $.ajax({
         url: "/api/cinemas",
         method: "get",
@@ -14,3 +22,8 @@ $(document).ready(function () {
         }
     )
 })
+
+function logout(){
+    sessionStorage.clear();
+    location.href="/"
+}

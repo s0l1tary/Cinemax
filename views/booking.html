@@ -29,7 +29,7 @@
 </nav>
     <h1 class = "headerTitle">Seating Plan</h1>
     <p style="margin:25px 100px 25px 100px;">You have selected <span class="movietitlespan"></span><br> at <span class="cinemanamespan"></span><br> on <span class="showdayspan"></span>,<span class="showtimespan"></span><br>Please select your seat(s):</p>
-    <form method="POST" action="/api/booking">
+    <form method="POST" action="/api/booking" onsubmit="return check()">
       <table class="seatingTable">
       <tr>
 
@@ -38,7 +38,7 @@
       <div class="stupidbtn">
         <input type="hidden" value="" id="showingHidden" name="showingId">
         <input type="hidden" value="" id="userHidden" name="userId">
-        <button type = "submit" class="booknowBtn" onclick="return checkLogin()">Book Now</button>
+        <button type = "submit" class="booknowBtn">Book Now</button>
       </div>
     </form>
     <fieldset class="legend">
@@ -49,11 +49,19 @@
     </fieldset>
     <script src="../js/client/booking.js"></script>
     <script>
-      function checkLogin() {
+      function check() {
         if(sessionStorage.getItem('lid')==null){
           alert("Please login before booking!");
           window.location.href="/Login";
+          return false
         }
+        checked = $("input[type=checkbox]:checked").length;
+        if(!checked){
+          alert("Please select at least one seat");
+          return false
+        }
+        return true
+      }
     </script>
 
 

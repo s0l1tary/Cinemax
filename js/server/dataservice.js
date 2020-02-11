@@ -128,6 +128,9 @@ var database = {
     getBookings:function(uid,callback){
         BookingModel.find({user:uid},callback);
     },
+    getUserDetails:function(uid,callback){
+        UserModel.findOne({_id:uid},callback);
+    },
     updateSeating:function(ShowingID,seatNo,changeTo,callback){
         ShowingModel.updateOne({_id : ShowingID, 'seats.seatNo' :seatNo}, {$set: {"seats.$.status" : changeTo}}, callback);
     },

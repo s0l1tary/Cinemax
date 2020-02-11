@@ -120,8 +120,17 @@
       </div>
     </div>
   </div>
-
+<script src="../js/client/jquery-3.4.1.min.js"></script>
     <script>
+          $(document).ready(function() {
+          var user;
+        if(sessionStorage.getItem('lid')!==null){
+    
+    user=JSON.parse(sessionStorage.getItem('lid'));
+    $('.authentication').html("Welcome " +user.email);
+    $('.authentication').append("<br><button onclick=\"location.href='/profile'\">View Profile</button>")
+    $('.authentication').append("<button onclick=\"logout()\">Logout</button>");
+}
       // Get the modal
       var privacyModal = document.getElementById("privacyModal");
       var termsModal = document.getElementById("termsModal");
@@ -162,6 +171,12 @@
           termsModal.style.display = "none";
         }
       }
+    });
+function logout(){
+    sessionStorage.clear();
+    location.href="/"
+}
+      
       </script>
 
 </body>

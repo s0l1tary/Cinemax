@@ -83,12 +83,24 @@ var routes = function () {
         res.sendFile(__dirname + "/views/booking.html");
     });
 
+    router.get('/BookingConfirmed',function(req,res){
+        res.sendFile(__dirname+"/views/bookingSucess.html");
+    })
+
     router.get('/Movie', function (req, res) {
         res.sendFile(__dirname + "/views/movie.html")
     });
     router.get('/confirmBooking', function (req, res) {
         res.sendFile(__dirname + "/views/confirm.html")
     })
+
+    router.get('/api/profileDetails/:id',function(req,res){
+        var data=req.params.id;
+        console.log(data)
+        db.getUserDetails(data,function(err,userDetails){
+            res.send(userDetails);
+        });
+    });
 
     router.post('/api/booking', function (req, res) {
         var data = req.body;
@@ -113,7 +125,7 @@ var routes = function () {
                         if (err) {
                             res.status(500).send("Unable to update seats")
                         }else{
-                            res.status(200).send(seat);
+                            res.status(200).redirect("/BookingConfirmed");
                         }
                     })
                 }
