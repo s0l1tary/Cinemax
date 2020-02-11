@@ -83,6 +83,10 @@ var routes = function () {
         res.sendFile(__dirname + "/views/booking.html");
     });
 
+    router.get('/viewBookings',function(req,res){
+        res.sendFile(__dirname+"/views/viewShowings.html")
+    });
+
     router.get('/BookingConfirmed',function(req,res){
         res.sendFile(__dirname+"/views/bookingSucess.html");
     })
@@ -136,7 +140,7 @@ var routes = function () {
 
         router.get('/api/bookings/:userId', function (req, res) {
             var userID = req.params.userId;
-            db.getBookings(userID, function (req, res) {
+            db.getBookings(userID, function (err, bookings) {
                 if (err) {
                     res.status(500).send("Unable to access bookings")
                 } else {
@@ -152,7 +156,7 @@ var routes = function () {
                 res.status(500).send("Unable to cancel booking")
             }
             else {
-                res.status(200).send("Booking deleted")
+                res.status(200).send(Booking)
             }
         })
     });

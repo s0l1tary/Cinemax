@@ -126,7 +126,7 @@ var database = {
         db.logout({});
     },
     getBookings:function(uid,callback){
-        BookingModel.find({user:uid},callback);
+        BookingModel.find({user:uid}).populate("showing").populate("user").exec(callback);
     },
     getUserDetails:function(uid,callback){
         UserModel.findOne({_id:uid},callback);

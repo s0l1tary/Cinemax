@@ -40,6 +40,10 @@ function logout(){
     sessionStorage.clear();
     location.href="/"
 }
+function showBookings() {
+  var user=JSON.parse(sessionStorage.getItem("lid"));
+  location.href="/viewBookings?id="+user._id;
+}
         </script>
     </head>
 <body>
@@ -69,6 +73,6 @@ function logout(){
       <span>Contact Number:</span><span id="cnField"></span>
       <span>Email:</span><span id="eField"></span>
     </section>
-    <button onclick="location.href='/'"></button>
+    <button onclick="showBookings()">View Bookings</button>
 </body>
 </html>

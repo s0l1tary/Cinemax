@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cinemax - Movies</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+    </script>
+</head>
+
+<body>
+    <header>
+        <img class="headerimg" src="../resources/Cinemax_(Yellow).svg.png">
+        <section class="authentication">
+            <p style="color:white;text-align:center;padding:5px">Cinemax Member ?</p>
+            <button onclick="window.location.href='/Login'" class="loginbtn">Login</button>
+            <button onclick="window.location.href='/Register'" class="registerbtn">Register</button>
+        </section>
+    </header>
+    <section class="space"></section>
+    <nav>
+        <ul class="navlist">
+            <li><a class="active" href="/">Movies</a></li>
+            <li><a href="/Cinema">Cinemas</a></li>
+            <li><a href="/Promotion">Promotions</a></li>
+            <li><a href="/About">About</a></li>
+        </ul>
+    </nav>
+    <h1 class="headerTitle">View Bookings</h1>
+    <section class="ShowingSection">
+
+    </section>
+    <script src="../js/client/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+        var URLParams = new URLSearchParams(window.location.search);
+    var userId = URLParams.get('id');
+        $.ajax(
+            {
+                url: '/api/bookings/'+userId,
+                method: 'get',
+            }
+        ).done(
+            function (data) {
+                console.log(data[0]);
+                $.each(data, function (key, value) {
+                    console.log(value.showing.movieId)
+                    $.ajax({
+                        url: "/api/movie/" + value.showing.movieId,
+                        method: "get",
+                        dataType: "json"
+                    }).done(
+                        function (data) {
+                            $(".ShowingSection").append("<p>Movie:" + data.title+ " Seats:"+value.seats+"<button onclick=\"deleteShowing('"+value._id+"')\">Cancel booking</button</p>");
+                        }
+                    ).fail(
+                        function (err) {
+                            alert("errss1")
+                        }
+                    )
+                });
+            }).fail(
+                function (err) {
+                    alert("err2ss")
+                }
+            )
+        });
+        function deleteShowing(id) {
+            $.ajax({
+                        url: "/api/booking/" + id,
+                        method: "delete",
+                        dataType: "json"
+                    }).done(
+                        function (data) {
+                            alert("canceled booking")
+                        }
+                    ).fail(
+                        function (err) {
+                            alert("err")
+                        }
+                    )
+                    location.reload();
+        }
+    </script>
+</body>
+
+</html>
