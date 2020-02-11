@@ -8,6 +8,18 @@
         <link rel="stylesheet" href="../css/styles.css">
         <script src="../js/client/jquery-3.4.1.min.js"></script>
         <script src="../js/client/cinema.js"></script>
+        <script>
+        $(document).ready(function() {
+            var user;
+            if(sessionStorage.getItem('lid')!==null){
+            
+            user=JSON.parse(sessionStorage.getItem('lid'));
+            $('.authentication').html("<p style=\"text-align:center;\">Welcome " +user.firstName+"<p>");
+            $('.authentication').append("<button class=\"profilebtn\" onclick=\"location.href='/profile'\">Profile</button>")
+            $('.authentication').append("<button class=\"logoutbtn\" onclick=\"logout()\">Logout</button>");
+          }
+        });
+        </script>
     </head>
 <body>
 <header>

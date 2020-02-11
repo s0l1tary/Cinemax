@@ -1,0 +1,22 @@
+#profileDetails {
+    margin: 50px;
+    background-color: white;
+    padding: 10px;
+}
+
+#profileDetails span {
+    color: black;
+}
+
+#profileDetails .boldtext {
+    font-weight: bolder;
+}
+
+#profileLabel {
+    float:left;
+    width: 200px;
+}
+
+#profileField {
+    clear: right;
+}

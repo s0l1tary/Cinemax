@@ -6,18 +6,19 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cinemax - Profile</title>
         <link rel="stylesheet" href="../css/styles.css">
+        <link rel="stylesheet" href="../css/profile.css">
         <script src="../js/client/jquery-3.4.1.min.js"></script>
         <script>
           $(document).ready(function() {
-          var user;
-        if(sessionStorage.getItem('lid')!==null){
-    
-    user=JSON.parse(sessionStorage.getItem('lid'));
-    $('.authentication').html("Welcome " +user.email);
-    $('.authentication').append("<br><button onclick=\"location.href='/profile'\">View Profile</button>")
-    $('.authentication').append("<button onclick=\"logout()\">Logout</button>");
-}
-$.ajax({
+            var user;
+            if(sessionStorage.getItem('lid')!==null){
+            
+            user=JSON.parse(sessionStorage.getItem('lid'));
+            $('.authentication').html("<p style=\"text-align:center;\">Welcome " +user.firstName+"<p>");
+            $('.authentication').append("<button class=\"profilebtn\" onclick=\"location.href='/profile'\">Profile</button>")
+            $('.authentication').append("<button class=\"logoutbtn\" onclick=\"logout()\">Logout</button>");
+        }
+    $.ajax({
         url: "/api/profileDetails/"+user._id,
         method: "get",
         dataType: "json"
@@ -64,15 +65,29 @@ function showBookings() {
     <li><a href="/About">About</a></li>
   </ul>
 </nav>
-    <h1>Profile</h1>
+    <h1 class="headerTitle">Profile</h1>
     <section id="profileDetails">
-      <span>First Name:</span><span id="fnField"></span>
-      <span>Last Name:</span><span id="lnField"></span>
-      <span>Gender:</span><span id="gField"></span>
-      <span>Date of birth:</span><span id="dobField"></span>
-      <span>Contact Number:</span><span id="cnField"></span>
-      <span>Email:</span><span id="eField"></span>
+      <section id="profileLabel">
+      <span class="boldtext">First Name:</span><br>
+      <span class="boldtext">Last Name:</span><br>
+      <span class="boldtext">Gender:</span><br>
+      <span class="boldtext">Date of birth:</span><br>
+      <span class="boldtext">Contact Number:</span><br>
+      <span class="boldtext">Email:</span><br>
     </section>
-    <button onclick="showBookings()">View Bookings</button>
+
+      <section id="profileField">
+        <span id="fnField"></span><br>
+        <span id="lnField"></span><br>
+        <span id="gField"></span><br>
+        <span id="dobField"></span><br>
+        <span id="cnField"></span><br>
+        <span id="eField"></span><br>
+      </section>
+      <br>
+      <br>
+      <button class = "showbookingbtn" onclick="showBookings()">View Bookings</button>
+  </section>
+
 </body>
 </html>

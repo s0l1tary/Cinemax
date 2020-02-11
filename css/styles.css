@@ -270,3 +270,30 @@ header {
     box-shadow: 0 0px white;
     transform: translateY(4px);
   }
+
+   .showbookingbtn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: darkorange; 
+    color:white ;
+    border: 2px solid rgb(165, 91, 0);
+    border-radius: 15px;
+    box-shadow: 0 3px white;
+    margin: 5px;
+  }
+  
+  .showbookingbtn:hover {
+    background-color: rgb(165, 91, 0);
+    color: white;
+  }
+  
+  .showbookingbtn:active {
+    background-color: rgb(165, 91, 0);
+    box-shadow: 0 0px white;
+    transform: translateY(4px);
+  }

@@ -12,7 +12,7 @@
             if(sessionStorage.getItem('lid')!==null){
             
             user=JSON.parse(sessionStorage.getItem('lid'));
-            $('.authentication').html("<p>Welcome " +user.firstName+"<p>");
+            $('.authentication').html("<p style=\"text-align:center;\">Welcome " +user.firstName+"<p>");
             $('.authentication').append("<button class=\"profilebtn\" onclick=\"location.href='/profile'\">Profile</button>")
             $('.authentication').append("<button class=\"logoutbtn\" onclick=\"logout()\">Logout</button>");
         }
