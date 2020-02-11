@@ -5,19 +5,18 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cinemax - Promotions</title>
-        <link rel="stylesheet" href="../css/styles.css">
         <script src="../js/client/jquery-3.4.1.min.js"></script>
         <script>
           $(document).ready(function() {
-          var user;
-        if(sessionStorage.getItem('lid')!==null){
-    
-    user=JSON.parse(sessionStorage.getItem('lid'));
-    $('.authentication').html("Welcome " +user.email);
-    $('.authentication').append("<br><button onclick=\"location.href='/profile'\">View Profile</button>")
-    $('.authentication').append("<button onclick=\"logout()\">Logout</button>");
-}
-          });
+            var user;
+            if(sessionStorage.getItem('lid')!==null){
+            
+            user=JSON.parse(sessionStorage.getItem('lid'));
+            $('.authentication').html("<p>Welcome " +user.firstName+"<p>");
+            $('.authentication').append("<button class=\"profilebtn\" onclick=\"location.href='/profile'\">Profile</button>")
+            $('.authentication').append("<button class=\"logoutbtn\" onclick=\"logout()\">Logout</button>");
+        }
+      });
 function logout(){
     sessionStorage.clear();
     location.href="/"
@@ -71,5 +70,6 @@ function logout(){
         </td>
       </tr>
     </table class ="promotionsTable">
+    <link rel="stylesheet" href="../css/styles.css">
 </body>
 </html>

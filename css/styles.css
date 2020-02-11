@@ -222,3 +222,51 @@ header {
     transition-duration: 0.4s;
     cursor: pointer;
   }
+
+  .profilebtn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 3px white;
+    margin: 5px;
+  }
+  
+  .profilebtn:hover {background-color: #3e8e41}
+  
+  .profilebtn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 0px white;
+    transform: translateY(4px);
+  }
+
+  .logoutbtn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #668cff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 3px white;
+    margin: 5px;
+  }
+  
+  .logoutbtn:hover {background-color:#5877e0}
+  
+  .logoutbtn:active {
+    background-color: #5877e0;
+    box-shadow: 0 0px white;
+    transform: translateY(4px);
+  }
