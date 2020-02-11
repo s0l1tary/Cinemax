@@ -19,6 +19,10 @@
             $('.authentication').append("<button class=\"logoutbtn\" onclick=\"logout()\">Logout</button>");
           }
         });
+        function logout(){
+          sessionStorage.clear();
+          location.href="/"
+        }
         </script>
     </head>
 <body>
